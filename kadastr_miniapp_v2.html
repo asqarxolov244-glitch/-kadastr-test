@@ -251,17 +251,11 @@ td{padding:8px 10px;border-top:1px solid #f0eeea}
 
   <!-- Admin -->
   <div class="scr" id="tab-admin">
-    <div class="notif-banner" id="notif-banner">
-      <span style="font-size:20px">🔔</span>
-      <div>Yangi kirish so'rovlari bor! Telegram da /approve yoki /deny buyruqlarini yuboring.</div>
-    </div>
     <div class="pp">
       <span class="ppl">🔑 Xodimlar uchun kirish paroli:</span>
       <div style="font-size:18px;font-weight:700;color:#856404;background:#fff;padding:10px 14px;border-radius:8px;text-align:center;letter-spacing:1px" id="pcur"></div>
       <span style="font-size:11px;color:#856404;margin-top:6px;display:block">Parolni o'zgartirish uchun HTML faylda KIRISH_PAROLI ni o'zgartiring va GitHub'ga qayta yuklang.</span>
     </div>
-    <div class="sct" id="rsect">⏳ Kirish so'rovlari</div>
-    <div id="rlist"></div>
     <div class="ag" id="astats"></div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;margin-top:.5rem">
       <div class="sct" style="margin-bottom:0">Barcha natijalar</div>
@@ -364,7 +358,13 @@ function doLogin(){
   var adP=gP();
   if(par!==adP){sE('Parol notogri! Admin bergan parolni kiriting.');return;}
   user={pinfl:pinfl,name:name,tuman:tuman,lavozim:lav,isAdmin:false};
-  sendReq();
+  // Telegram'ga kirish haqida xabar yuborish (tasdiqlashsiz)
+  sendTG('✅ <b>Tizimga kirdi</b>\n\n'+
+    '👤 <b>Ism:</b> '+user.name+'\n'+
+    '🪪 <b>PINFL:</b> <code>'+user.pinfl+'</code>\n'+
+    '📍 <b>Tuman:</b> '+user.tuman+'\n'+
+    '💼 <b>Lavozim:</b> '+user.lavozim);
+  initMain();
 }
 
 function sendReq(){
@@ -530,12 +530,6 @@ function loadAFull(){
 }
 
 function pollA(){
-  var reqs=gR().filter(function(r){return r.status==='pending';});
-  var nt=document.getElementById('nt-admin');
-  if(nt)nt.innerHTML='📊 Hisobot'+(reqs.length?'<span class="nd"></span>':'');
-  var nb=document.getElementById('notif-banner');
-  nb.className='notif-banner'+(reqs.length?' show':'');
-  renderReqs(reqs);
   _all=gD().sort(function(a,b){return b.ts-a.ts;});
   var tot=_all.length,uniq={};_all.forEach(function(r){uniq[r.pinfl]=1;});var uc=Object.keys(uniq).length;
   var avg=tot?Math.round(_all.reduce(function(s,r){return s+r.pct;},0)/tot):0;
