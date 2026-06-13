@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Kadastr Bilim Testi</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif;-webkit-tap-highlight-color:transparent}
+body{background:#f0f2f5;color:#1a1a1a;min-height:100vh;padding-bottom:30px}
+.page{max-width:480px;margin:0 auto;padding:1rem}
+.scr{display:none}.scr.on{display:block}
+.lb{background:#fff;border-radius:16px;padding:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.ll{font-size:36px;text-align:center;margin-bottom:.5rem}
+.lt{font-size:18px;font-weight:700;text-align:center;margin-bottom:.2rem}
+.ls{font-size:12px;color:#666;text-align:center;margin-bottom:1.25rem}
+.tginfo{background:#e8f4fd;border-radius:10px;padding:.75rem 1rem;font-size:13px;color:#0c5a8a;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.field{margin-bottom:.75rem}
+.field label{font-size:11px;font-weight:600;color:#666;display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+.field input,.field select{width:100%;padding:11px 13px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:14px;color:#1a1a1a;background:#fff}
+.field input:focus,.field select:focus{outline:none;border-color:#4f46e5}
+.abox{background:#fef3c7;border-radius:10px;padding:9px 13px;font-size:13px;color:#92400e;text-align:center;margin-bottom:.75rem}
+.err{background:#fef2f2;color:#991b1b;border-radius:10px;padding:9px 13px;font-size:13px;margin-bottom:.75rem;display:none}
+.btnl{width:100%;padding:13px;background:#4f46e5;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;margin-top:.25rem}
+.hint{font-size:11px;color:#bbb;text-align:center;margin-top:.75rem}
+/* WAIT */
+.wb{background:#fff;border-radius:16px;padding:2rem;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.pulse{font-size:42px;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.wt{font-size:17px;font-weight:700;margin:.75rem 0 .4rem}
+.ws{font-size:13px;color:#666;line-height:1.55;margin-bottom:1.25rem}
+.wn{font-size:36px;font-weight:700;color:#4f46e5;margin-bottom:.25rem}
+.wl{font-size:12px;color:#999;margin-bottom:1.25rem}
+.btnc{padding:10px 24px;background:#f5f4f0;border:1.5px solid #e0e0e0;border-radius:10px;font-size:13px;cursor:pointer;color:#666}
+/* TOPBAR */
+.topbar{background:#fff;border-radius:12px;padding:.75rem 1rem;margin-bottom:.85rem;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 5px rgba(0,0,0,.05)}
+.badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:2px}
+.ba{background:#fee2e2;color:#991b1b}.bu{background:#e0e7ff;color:#3730a3}
+.tbn{font-size:14px;font-weight:600}.tbm{font-size:11px;color:#666}
+.btno{padding:6px 12px;background:#f5f4f0;border:1px solid #e0e0e0;border-radius:8px;font-size:12px;cursor:pointer;color:#666}
+.nav{display:flex;gap:6px;margin-bottom:.85rem}
+.ntab{padding:8px 0;border-radius:9px;font-size:13px;font-weight:500;cursor:pointer;border:1.5px solid #e0e0e0;background:#fff;color:#666;flex:1;text-align:center}
+.ntab.on{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.nd{display:inline-block;width:7px;height:7px;border-radius:50%;background:#ef4444;margin-left:4px;animation:blink 1s infinite;vertical-align:middle}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+/* DASH */
+.dg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:.85rem}
+.dc{background:#fff;border-radius:11px;padding:.85rem .5rem;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.dn{font-size:22px;font-weight:700;color:#4f46e5}.dl{font-size:11px;color:#666;margin-top:2px}
+.sc{background:linear-gradient(135deg,#4f46e5,#7c3aed);border-radius:14px;padding:1.25rem 1.4rem;color:#fff;margin-bottom:.85rem;cursor:pointer}
+.sc h3{font-size:16px;font-weight:700;margin-bottom:.3rem}
+.sc p{font-size:12px;opacity:.8;margin-bottom:.75rem}
+.go{display:inline-block;background:rgba(255,255,255,.2);padding:7px 18px;border-radius:9px;font-size:13px;font-weight:600}
+.sct{font-size:12px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.5rem}
+.hi{background:#fff;border-radius:10px;padding:.7rem .9rem;margin-bottom:5px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.hil{font-size:12px;color:#666}.hid{font-size:11px;color:#aaa;margin-top:1px}.his{font-size:15px;font-weight:700}
+.sg{color:#059669}.sy{color:#d97706}.sr{color:#dc2626}
+/* QUIZ */
+.pb{height:5px;background:#e0e0e0;border-radius:3px;margin-bottom:1rem;overflow:hidden}
+.pf{height:100%;background:linear-gradient(90deg,#4f46e5,#7c3aed);border-radius:3px;transition:width .3s}
+.qm{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
+.qc{font-size:12px;color:#888}
+.qt{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:#e0e7ff;color:#3730a3}
+.qcard{background:#fff;border-radius:13px;padding:1.1rem 1.25rem;margin-bottom:.75rem;box-shadow:0 1px 5px rgba(0,0,0,.05)}
+.ql{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.9px;color:#4f46e5;margin-bottom:.5rem}
+.qq{font-size:15px;font-weight:500;line-height:1.55}
+.opts{display:flex;flex-direction:column;gap:7px;margin-bottom:.75rem}
+.opt{padding:12px 14px;border:1.5px solid #e0e0e0;border-radius:11px;font-size:14px;cursor:pointer;background:#fff;text-align:left;display:flex;align-items:flex-start;gap:9px;line-height:1.4}
+.opt.correct{background:#ecfdf5;border-color:#10b981;color:#065f46}
+.opt.wrong{background:#fef2f2;border-color:#ef4444;color:#991b1b}
+.opt:disabled{cursor:default}
+.ol{min-width:24px;height:24px;border-radius:50%;background:#f0f2f5;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.opt.correct .ol{background:#d1fae5;color:#065f46}
+.opt.wrong .ol{background:#fee2e2;color:#991b1b}
+.expl{background:#f5f3ff;border-left:3px solid #4f46e5;border-radius:0 11px 11px 0;padding:.8rem .95rem;font-size:13px;color:#3730a3;line-height:1.55;margin-bottom:.75rem;display:none}
+.qf{display:flex;justify-content:space-between;align-items:center}
+.lv{font-size:13px;color:#888}.lv span{font-weight:600;color:#1a1a1a}
+.btnn{padding:10px 22px;background:#4f46e5;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;display:none}
+/* RESULT */
+.rc{background:#fff;border-radius:15px;padding:1.5rem;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.06);margin-bottom:.85rem}
+.ring{width:100px;height:100px;border-radius:50%;margin:0 auto .9rem;display:flex;align-items:center;justify-content:center;flex-direction:column;border:4px solid #4f46e5;background:#f5f3ff}
+.rn{font-size:26px;font-weight:700;color:#4f46e5}.rl{font-size:11px;color:#7c3aed}
+.grade{font-size:18px;font-weight:700;margin-bottom:.3rem}.grades{font-size:13px;color:#666;margin-bottom:1rem}
+.s3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:1rem}
+.st{background:#f5f4f0;border-radius:10px;padding:.7rem;text-align:center}
+.stn{font-size:20px;font-weight:700}.stl{font-size:11px;color:#888;margin-top:2px}
+.rbs{display:flex;gap:8px;justify-content:center}
+.btnp{padding:10px 18px;background:#4f46e5;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer}
+.btns2{padding:10px 18px;background:#fff;border:1.5px solid #e0e0e0;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer}
+.wrc{background:#fff;border-radius:12px;padding:1rem 1.1rem;box-shadow:0 1px 5px rgba(0,0,0,.04)}
+.wrc h3{font-size:13px;font-weight:600;color:#dc2626;margin-bottom:.65rem}
+.wi{padding:7px 0;border-bottom:1px solid #f0eeea;font-size:13px;line-height:1.4}
+.wi:last-child{border-bottom:none}
+.wih{font-size:11px;color:#888;margin-bottom:2px}.wic{color:#059669;font-size:12px;margin-top:3px}
+/* ADMIN */
+.reqc{background:#fff;border-radius:12px;padding:1rem;margin-bottom:.7rem;box-shadow:0 1px 5px rgba(0,0,0,.05);border-left:4px solid #f59e0b}
+.reqn{font-size:14px;font-weight:700;margin-bottom:.3rem}
+.reqm{font-size:12px;color:#666;margin-bottom:.75rem;line-height:1.5}
+.reqb{display:flex;gap:8px}
+.btnal{padding:10px 0;background:#059669;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;flex:1}
+.btndn{padding:10px 0;background:#dc2626;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;flex:1}
+.reqtr{font-size:11px;color:#aaa;text-align:center;margin-top:.5rem}
+.noreq{text-align:center;padding:1.25rem;background:#f5f4f0;border-radius:10px;color:#888;font-size:13px;margin-bottom:.85rem}
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem}
+.ac{background:#fff;border-radius:11px;padding:.8rem;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.acn{font-size:20px;font-weight:700;color:#4f46e5}.acl{font-size:11px;color:#888;margin-top:2px}
+.tblw{background:#fff;border-radius:12px;overflow:auto;box-shadow:0 1px 5px rgba(0,0,0,.04);margin-bottom:.85rem}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:380px}
+th{background:#f8f7f5;padding:8px 10px;text-align:left;font-weight:600;color:#666;font-size:11px;text-transform:uppercase;white-space:nowrap}
+td{padding:8px 10px;border-top:1px solid #f0eeea}
+.pill{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
+.pg{background:#d1fae5;color:#065f46}.py{background:#fef3c7;color:#92400e}.pr{background:#fee2e2;color:#991b1b}
+.te{text-align:center;padding:1.5rem;color:#bbb;font-size:13px}
+.pp{background:#fff3cd;border-radius:10px;padding:.85rem 1rem;margin-bottom:.85rem}
+.ppl{font-size:13px;font-weight:600;color:#856404;display:block;margin-bottom:.5rem}
+.pp-row{display:flex;gap:8px;align-items:center}
+.pp input{flex:1;padding:8px 11px;border:1.5px solid #ffc107;border-radius:8px;font-size:13px;background:#fff}
+.btnpar{padding:8px 14px;background:#856404;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer}
+.pcur{font-size:12px;color:#856404;margin-top:6px;display:block}
+.btncsv{padding:8px 14px;background:#059669;color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer}
+.notif-banner{background:#fff;border:1.5px solid #f59e0b;border-radius:12px;padding:.85rem 1rem;margin-bottom:.85rem;font-size:13px;color:#92400e;display:none;align-items:flex-start;gap:10px}
+.notif-banner.show{display:flex}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="scr on" id="s-login">
+<div class="page"><div class="lb">
+  <div class="ll">📋</div>
+  <div class="lt">Kadastr bilim testi</div>
+  <div class="ls">Davlat Kadastrlari Palatasi · Qashqadaryo viloyati</div>
+  <div class="tginfo" id="tginfo" style="display:none">
+    <span>👤</span><span id="tgname"></span>
+  </div>
+  <div class="field">
+    <label>PINFL (14 raqam)</label>
+    <input type="text" id="i-pinfl" maxlength="14" placeholder="12345678901234" oninput="this.value=this.value.replace(/\D/g,'');onP()" inputmode="numeric">
+  </div>
+  <div id="asec" style="display:none">
+    <div class="abox">🔐 Admin sifatida kirilmoqda</div>
+    <div class="field"><label>Admin paroli</label><input type="password" id="i-ap" placeholder="Parolni kiriting"></div>
+  </div>
+  <div id="xsec" style="display:none">
+    <div class="field"><label>Ism Familiya</label><input type="text" id="i-name" placeholder="Karimov Jasur Aliyevich"></div>
+    <div class="field">
+      <label>Bo'linma / Tuman / Shahar</label>
+      <select id="i-tuman">
+        <option value="">— Tanlang —</option>
+        <option>🏛 Viloyat boshqarmasi (Qarshi)</option>
+        <optgroup label="─────────────────"></optgroup>
+        <optgroup label="Shaharlar"><option>Qarshi shahar</option><option>Shahrisabz shahar</option></optgroup>
+        <optgroup label="Tumanlar">
+          <option>Qarshi tumani</option><option>Kasbi tumani</option><option>Kitob tumani</option>
+          <option>Koson tumani</option><option>Mirishkor tumani</option><option>Muborak tumani</option>
+          <option>Nishon tumani</option><option>Shahrisabz tumani</option><option>G'uzor tumani</option>
+          <option>Yakkabog' tumani</option><option>Chiroqchi tumani</option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="field">
+      <label>Lavozim</label>
+      <select id="i-lav">
+        <option value="">— Tanlang —</option>
+        <optgroup label="Boshqarma">
+          <option>Boshqarma boshlig'i</option><option>Boshqarma boshlig'i o'rinbosari</option>
+          <option>Bo'lim boshlig'i</option><option>Bosh mutaxassis</option>
+          <option>Yetakchi mutaxassis</option><option>Mutaxassis</option>
+        </optgroup>
+        <optgroup label="Rahbariyat"><option>Filial rahbari</option><option>Bosh muhandis</option></optgroup>
+        <optgroup label="Muhandislar"><option>Kadastr muhandisi</option><option>Balans muhandisi</option><option>Topograf</option></optgroup>
+        <optgroup label="Xodimlar"><option>Manzillar reyestri xodimi</option><option>DKYaT xodimi</option><option>Registrator</option></optgroup>
+      </select>
+    </div>
+    <div class="field"><label>Kirish paroli (admin bergan)</label><input type="password" id="i-par" placeholder="Parolni kiriting"></div>
+  </div>
+  <div class="err" id="lerr"></div>
+  <button class="btnl" onclick="doLogin()">Kirish →</button>
+  <div class="hint">Admin PINFL: <b>00000000000000</b></div>
+</div></div>
+</div>
+
+<!-- KUTISH -->
+<div class="scr" id="s-wait">
+<div class="page"><div class="wb">
+  <div class="pulse">⏳</div>
+  <div class="wt">Admin tasdiqlashini kuting</div>
+  <div class="ws">So'rovingiz adminga <b>Telegram orqali</b> yuborildi.<br>Admin ruxsat berguncha kuting.</div>
+  <div class="wn" id="wtimer">60</div>
+  <div class="wl">soniya qoldi</div>
+  <button class="btnc" onclick="cancelWait()">Bekor qilish</button>
+</div></div>
+</div>
+
+<!-- MAIN -->
+<div class="scr" id="s-main">
+<div class="page">
+  <div class="topbar">
+    <div>
+      <div class="badge" id="tbbadge"></div>
+      <div class="tbn" id="tbname"></div>
+      <div class="tbm" id="tbmeta"></div>
+    </div>
+    <button class="btno" onclick="doLogout()">Chiqish</button>
+  </div>
+  <div class="nav" id="nav"></div>
+
+  <!-- Bosh sahifa -->
+  <div class="scr" id="tab-home">
+    <div class="dg" id="udash"></div>
+    <div class="sc" onclick="startQuiz()">
+      <h3>📝 Testni boshlash</h3>
+      <p>6 ta me'yoriy hujjat · 10 ta tasodifiy savol</p>
+      <div class="go">Boshlash →</div>
+    </div>
+    <div class="sct">Oxirgi natijalar</div>
+    <div id="uhist"></div>
+  </div>
+
+  <!-- Quiz -->
+  <div class="scr" id="tab-quiz">
+    <div class="pb"><div class="pf" id="prog" style="width:0%"></div></div>
+    <div class="qm"><span class="qc" id="qcnt">1/10</span><span class="qt" id="qtag"></span></div>
+    <div class="qcard"><div class="ql" id="qlbl">Savol 1</div><div class="qq" id="qtxt"></div></div>
+    <div class="opts" id="opts"></div>
+    <div class="expl" id="expl"></div>
+    <div class="qf">
+      <div class="lv">✓ <span id="lc">0</span> &nbsp;✗ <span id="lw">0</span></div>
+      <button class="btnn" id="btnn" onclick="nextQ()">Keyingi →</button>
+    </div>
+  </div>
+
+  <!-- Natija -->
+  <div class="scr" id="tab-result">
+    <div class="rc">
+      <div class="ring"><div class="rn" id="rpct">0%</div><div class="rl">natija</div></div>
+      <div class="grade" id="rgrade"></div><div class="grades" id="rgs"></div>
+      <div class="s3">
+        <div class="st"><div class="stn sg" id="rc2">0</div><div class="stl">To'g'ri</div></div>
+        <div class="st"><div class="stn sr" id="rw2">0</div><div class="stl">Noto'g'ri</div></div>
+        <div class="st"><div class="stn" style="color:#4f46e5" id="rt2">0</div><div class="stl">Jami</div></div>
+      </div>
+      <div class="rbs">
+        <button class="btns2" onclick="goHome()">← Bosh sahifa</button>
+        <button class="btnp" onclick="startQuiz()">Qayta urinish</button>
+      </div>
+    </div>
+    <div id="wrapw"></div>
+  </div>
+
+  <!-- Admin -->
+  <div class="scr" id="tab-admin">
+    <div class="notif-banner" id="notif-banner">
+      <span style="font-size:20px">🔔</span>
+      <div>Yangi kirish so'rovlari bor! Telegram da /approve yoki /deny buyruqlarini yuboring.</div>
+    </div>
+    <div class="pp">
+      <span class="ppl">🔑 Xodimlar uchun kirish paroli:</span>
+      <div class="pp-row">
+        <input type="password" id="npinp" placeholder="Yangi parol kiriting">
+        <button class="btnpar" onclick="changeP()">Saqlash</button>
+      </div>
+      <span class="pcur" id="pcur"></span>
+    </div>
+    <div class="sct" id="rsect">⏳ Kirish so'rovlari</div>
+    <div id="rlist"></div>
+    <div class="ag" id="astats"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;margin-top:.5rem">
+      <div class="sct" style="margin-bottom:0">Barcha natijalar</div>
+      <button class="btncsv" onclick="expCSV()">⬇ CSV</button>
+    </div>
+    <div class="tblw">
+      <table><thead><tr><th>#</th><th>Ism</th><th>Tuman</th><th>Ball</th><th>Sana</th></tr></thead>
+      <tbody id="mtb"></tbody></table>
+    </div>
+    <div class="sct" style="margin-bottom:.5rem">Tuman statistikasi</div>
+    <div class="tblw">
+      <table><thead><tr><th>Tuman</th><th>Xodimlar</th><th>Urinish</th><th>O'rtacha</th></tr></thead>
+      <tbody id="ttb"></tbody></table>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+// ========== SOZLAMALAR ==========
+var BOT_TOKEN = '8885477150:AAHUe19BSwq8JyHtRjHuAWmZzFkB8znu9zY';
+var ADMIN_TG_ID = '1233530096';
+var ADMIN_PINFL = '00000000000000';
+
+var TG = window.Telegram && window.Telegram.WebApp;
+if(TG){ TG.ready(); TG.expand(); }
+
+// ========== LOCAL STORAGE ==========
+var PK='kd_p', RK='kd_r', DK='kd_d';
+function gP(){try{return localStorage.getItem(PK)||''}catch(e){return''}}
+function sP(p){try{localStorage.setItem(PK,p)}catch(e){}}
+function gR(){try{return JSON.parse(localStorage.getItem(RK)||'[]')}catch(e){return[]}}
+function sR(a){try{localStorage.setItem(RK,JSON.stringify(a))}catch(e){}}
+function gD(){try{return JSON.parse(localStorage.getItem(DK)||'[]')}catch(e){return[]}}
+function sD(a){try{localStorage.setItem(DK,JSON.stringify(a))}catch(e){}}
+function addR(r){var a=gR();a.push(r);sR(a);}
+function addD(r){var a=gD();a.push(r);sD(a);}
+function updR(key,st){var a=gR();for(var i=0;i<a.length;i++){if(a[i].key===key){a[i].status=st;break;}}sR(a);}
+function myD(p){return gD().filter(function(r){return r.pinfl===p;}).sort(function(a,b){return b.ts-a.ts;})}
+
+// ========== TELEGRAM XABAR ==========
+function sendTG(text){
+  fetch('https://api.telegram.org/bot'+BOT_TOKEN+'/sendMessage',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({chat_id:ADMIN_TG_ID,text:text,parse_mode:'HTML'})
+  }).catch(function(){});
+}
+
+// ========== STATE ==========
+var user=null,qs=[],cur=0,corr=0,wrn=0,ans=false,wqs=[];
+var wInt=null,pInt=null,admT={},pKey=null,_all=[];
+
+// Telegram user ma'lumotlari
+var tgUser = TG && TG.initDataUnsafe && TG.initDataUnsafe.user;
+if(tgUser){
+  document.getElementById('tginfo').style.display='flex';
+  document.getElementById('tgname').textContent=(tgUser.first_name||'')+' '+(tgUser.last_name||'')+' (Telegram)';
+}
+
+function onP(){
+  var v=document.getElementById('i-pinfl').value;
+  document.getElementById('asec').style.display=v===ADMIN_PINFL?'block':'none';
+  document.getElementById('xsec').style.display=(v.length>0&&v!==ADMIN_PINFL)?'block':'none';
+  if(v.length>0&&v!==ADMIN_PINFL&&tgUser){
+    var inp=document.getElementById('i-name');
+    if(!inp.value) inp.value=(tgUser.first_name||'')+' '+(tgUser.last_name||'');
+  }
+}
+
+function sE(m){var e=document.getElementById('lerr');e.textContent=m;e.style.display='block';}
+function hE(){document.getElementById('lerr').style.display='none';}
+
+function doLogin(){
+  hE();
+  var pinfl=document.getElementById('i-pinfl').value.trim();
+  if(pinfl.length!==14){sE('PINFL 14 ta raqamdan iborat bolishi kerak');return;}
+  if(pinfl===ADMIN_PINFL){
+    var ap=document.getElementById('i-ap').value;
+    if(!ap){sE('Admin parolini kiriting');return;}
+    var sv=gP();
+    if(!sv){
+      sP(ap);
+      user={pinfl:pinfl,name:'Administrator',tuman:'Viloyat boshqarmasi',lavozim:'Admin',isAdmin:true};
+      sendTG('🔐 <b>Admin tizimga kirdi</b>\nParol o\'rnatildi.');
+      initMain();
+    }else if(ap===sv){
+      user={pinfl:pinfl,name:'Administrator',tuman:'Viloyat boshqarmasi',lavozim:'Admin',isAdmin:true};
+      initMain();
+    }else sE('Admin paroli notogri!');
+    return;
+  }
+  var name=document.getElementById('i-name').value.trim();
+  var tuman=document.getElementById('i-tuman').value;
+  var lav=document.getElementById('i-lav').value;
+  var par=document.getElementById('i-par').value;
+  if(!name){sE('Ism Familiyani kiriting');return;}
+  if(!tuman){sE('Tuman/shaharni tanlang');return;}
+  if(!lav){sE('Lavozimni tanlang');return;}
+  if(!par){sE('Parolni kiriting');return;}
+  var adP=gP();
+  if(!adP){sE('Admin hali parol ornatmagan. Avval admin kirsin.');return;}
+  if(par!==adP){sE('Parol notogri! Admin bergan parolni kiriting.');return;}
+  user={pinfl:pinfl,name:name,tuman:tuman,lavozim:lav,isAdmin:false};
+  sendReq();
+}
+
+function sendReq(){
+  var key='r'+Date.now();
+  pKey=key;
+  var req={key:key,pinfl:user.pinfl,name:user.name,tuman:user.tuman,lavozim:user.lavozim,ts:Date.now(),status:'pending'};
+  addR(req);
+
+  // Telegram orqali adminga xabar
+  var msg='🔔 <b>Yangi kirish so\'rovi!</b>\n\n'+
+    '👤 <b>Ism:</b> '+user.name+'\n'+
+    '🪪 <b>PINFL:</b> <code>'+user.pinfl+'</code>\n'+
+    '📍 <b>Tuman:</b> '+user.tuman+'\n'+
+    '💼 <b>Lavozim:</b> '+user.lavozim+'\n\n'+
+    '✅ Ruxsat berish uchun tizimni oching va tasdiqlang!';
+  sendTG(msg);
+
+  show('s-wait');
+  var sec=60;
+  document.getElementById('wtimer').textContent=sec;
+  wInt=setInterval(function(){
+    sec--;
+    document.getElementById('wtimer').textContent=sec;
+    if(sec<=0){clearInterval(wInt);denyW();return;}
+    var reqs=gR(),found=null;
+    for(var i=0;i<reqs.length;i++){if(reqs[i].key===pKey){found=reqs[i];break;}}
+    if(!found||found.status==='denied'){clearInterval(wInt);denyW();}
+    else if(found.status==='allowed'){clearInterval(wInt);initMain();}
+  },1000);
+}
+
+function denyW(){user=null;pKey=null;show('s-login');sE('Kirish rad etildi yoki muddat tugadi.');}
+function cancelWait(){clearInterval(wInt);user=null;pKey=null;show('s-login');}
+
+function doLogout(){
+  clearInterval(wInt);clearInterval(pInt);
+  Object.keys(admT).forEach(function(k){clearInterval(admT[k]);});admT={};
+  user=null;pKey=null;
+  ['i-pinfl','i-ap','i-name','i-par'].forEach(function(id){document.getElementById(id).value='';});
+  document.getElementById('i-tuman').value='';document.getElementById('i-lav').value='';
+  document.getElementById('asec').style.display='none';document.getElementById('xsec').style.display='none';
+  hE();show('s-login');
+}
+
+function initMain(){
+  show('s-main');
+  document.getElementById('tbname').textContent=user.name;
+  document.getElementById('tbmeta').textContent=user.isAdmin?'Administrator':user.tuman+' · '+user.lavozim;
+  var b=document.getElementById('tbbadge');b.textContent=user.isAdmin?'Admin':'Xodim';b.className='badge '+(user.isAdmin?'ba':'bu');
+  var nav=document.getElementById('nav');nav.innerHTML='';
+  var tabs=user.isAdmin?[{id:'home',l:'🏠 Test'},{id:'admin',l:'📊 Hisobot'}]:[{id:'home',l:'🏠 Bosh sahifa'}];
+  tabs.forEach(function(t){
+    var d=document.createElement('div');d.className='ntab';d.id='nt-'+t.id;
+    d.onclick=function(){swTab(t.id,d);};d.innerHTML=t.l;nav.appendChild(d);
+  });
+  swTab('home');
+  if(user.isAdmin) pInt=setInterval(pollA,2000);
+}
+
+function swTab(id,el){
+  ['tab-home','tab-quiz','tab-result','tab-admin'].forEach(function(s){
+    var e=document.getElementById(s);e.classList.remove('on');e.style.display='none';
+  });
+  document.getElementById('tab-'+id).classList.add('on');document.getElementById('tab-'+id).style.display='block';
+  document.querySelectorAll('.ntab').forEach(function(n){n.classList.remove('on');});
+  if(el)el.classList.add('on');
+  else{var e2=document.getElementById('nt-'+id);if(e2)e2.classList.add('on');}
+  if(id==='home')loadH();if(id==='admin')loadAFull();
+}
+
+function loadH(){
+  var res=myD(user.pinfl);
+  var tot=res.length,avg=tot?Math.round(res.reduce(function(s,r){return s+r.pct;},0)/tot):0;
+  var best=tot?Math.max.apply(null,res.map(function(r){return r.pct;})):0;
+  document.getElementById('udash').innerHTML=
+    '<div class="dc"><div class="dn">'+tot+'</div><div class="dl">Urinishlar</div></div>'+
+    '<div class="dc"><div class="dn">'+avg+'%</div><div class="dl">Ortacha</div></div>'+
+    '<div class="dc"><div class="dn">'+best+'%</div><div class="dl">Eng yuqori</div></div>';
+  var h=document.getElementById('uhist');
+  if(!res.length){h.innerHTML='<div style="text-align:center;padding:1rem;color:#bbb;font-size:13px">Hali test yechilmagan!</div>';return;}
+  h.innerHTML=res.slice(0,5).map(function(r){
+    var cl=r.pct>=70?'sg':r.pct>=50?'sy':'sr';
+    var d=new Date(r.ts),ds=d.getDate()+'.'+(d.getMonth()+1)+'.'+d.getFullYear()+' '+d.getHours()+':'+String(d.getMinutes()).padStart(2,'0');
+    return'<div class="hi"><div><div class="hil">10 savol</div><div class="hid">'+ds+'</div></div><div class="his '+cl+'">'+r.pct+'%</div></div>';
+  }).join('');
+}
+
+function startQuiz(){
+  var pool=[].concat(Q).sort(function(){return Math.random()-.5;});qs=pool.slice(0,10);
+  cur=0;corr=0;wrn=0;ans=false;wqs=[];
+  ['tab-home','tab-result'].forEach(function(id){document.getElementById(id).classList.remove('on');document.getElementById(id).style.display='none';});
+  document.getElementById('tab-quiz').classList.add('on');document.getElementById('tab-quiz').style.display='block';
+  renderQ();
+}
+
+function renderQ(){
+  if(cur>=qs.length){finishQ();return;}
+  var q=qs[cur];
+  document.getElementById('prog').style.width=((cur/qs.length)*100)+'%';
+  document.getElementById('qcnt').textContent=(cur+1)+'/'+qs.length;
+  document.getElementById('qtag').textContent=q.h;
+  document.getElementById('qlbl').textContent='Savol '+(cur+1);
+  document.getElementById('qtxt').textContent=q.q;
+  document.getElementById('opts').innerHTML=q.o.map(function(o,i){
+    return'<button class="opt" onclick="answer('+i+')"><span class="ol">'+['A','B','C','D'][i]+'</span>'+o+'</button>';
+  }).join('');
+  document.getElementById('expl').style.display='none';document.getElementById('btnn').style.display='none';
+  document.getElementById('lc').textContent=corr;document.getElementById('lw').textContent=wrn;ans=false;
+}
+
+function answer(idx){
+  if(ans)return;ans=true;
+  var q=qs[cur];var opts=document.querySelectorAll('.opt');opts.forEach(function(o){o.disabled=true;});
+  if(idx===q.c){opts[idx].classList.add('correct');corr++;}
+  else{opts[idx].classList.add('wrong');opts[q.c].classList.add('correct');wrn++;wqs.push({q:q.q,h:q.h,c:q.o[q.c]});}
+  document.getElementById('lc').textContent=corr;document.getElementById('lw').textContent=wrn;
+  var ex=document.getElementById('expl');ex.innerHTML='💡 '+q.e;ex.style.display='block';
+  var btn=document.getElementById('btnn');btn.style.display='inline-block';
+  btn.textContent=cur+1>=qs.length?'Natijani korish':'Keyingi';
+  if(TG) TG.HapticFeedback.impactOccurred(idx===q.c?'light':'heavy');
+}
+
+function nextQ(){cur++;renderQ();}
+
+function finishQ(){
+  var pct=Math.round(corr/qs.length*100);
+  addD({pinfl:user.pinfl,name:user.name,tuman:user.tuman,lavozim:user.lavozim,pct:pct,corr:corr,wrn:wrn,total:qs.length,ts:Date.now()});
+  // Admin bo'lsa Telegram xabar yubormaslik
+  if(!user.isAdmin){
+    var gr=pct>=90?'🏆 Ajoyib':pct>=70?'👍 Yaxshi':pct>=50?'📚 Qoniqarli':'📖 Yaxshilash kerak';
+    sendTG('📊 <b>Test natijasi</b>\n\n'+
+      '👤 '+user.name+'\n'+
+      '📍 '+user.tuman+' · '+user.lavozim+'\n'+
+      '🎯 Ball: <b>'+pct+'%</b> ('+corr+'/'+qs.length+')\n'+
+      gr);
+  }
+  document.getElementById('tab-quiz').classList.remove('on');document.getElementById('tab-quiz').style.display='none';
+  document.getElementById('tab-result').classList.add('on');document.getElementById('tab-result').style.display='block';
+  document.getElementById('rpct').textContent=pct+'%';
+  document.getElementById('rc2').textContent=corr;document.getElementById('rw2').textContent=wrn;document.getElementById('rt2').textContent=qs.length;
+  var g,s;
+  if(pct>=90){g='Ajoyib! 🎉';s='Bilimingiz mukammal!'}
+  else if(pct>=70){g='Yaxshi! 👍';s='Asosiy qoidalarni yaxshi bilasiz.'}
+  else if(pct>=50){g='Qoniqarli 📚';s="Ba'zi mavzularni mustahkamlang."}
+  else{g="Ko'proq o'qish kerak 📖";s="Hujjatlarni qaytadan ko'rib chiqing.";}
+  document.getElementById('rgrade').textContent=g;document.getElementById('rgs').textContent=s;
+  var ww=document.getElementById('wrapw');
+  if(wqs.length){
+    ww.innerHTML='<div class="wrc"><h3>❌ Xato qilingan savollar</h3>'+
+      wqs.map(function(w){return'<div class="wi"><div class="wih">'+w.h+'</div>'+w.q+'<div class="wic">✓ Togri: '+w.c+'</div></div>';}).join('')+'</div>';
+  }else ww.innerHTML='';
+  document.querySelectorAll('.ntab').forEach(function(n){n.classList[n.id==='nt-home'?'add':'remove']('on');});
+  if(TG) TG.HapticFeedback.notificationOccurred(pct>=70?'success':'warning');
+}
+
+function goHome(){document.getElementById('tab-result').classList.remove('on');document.getElementById('tab-result').style.display='none';swTab('home');}
+
+function changeP(){
+  var p=document.getElementById('npinp').value.trim();if(!p){alert('Parol bosh bolmasin');return;}
+  sP(p);document.getElementById('npinp').value='';document.getElementById('pcur').textContent='Joriy parol: '+p;
+  sendTG('🔑 <b>Kirish paroli yangilandi</b>\nYangi parol: <code>'+p+'</code>');
+}
+
+function loadAFull(){
+  var p=gP();document.getElementById('pcur').textContent=p?'Joriy parol: '+p:'Parol hali ornatilmagan';
+  pollA();
+}
+
+function pollA(){
+  var reqs=gR().filter(function(r){return r.status==='pending';});
+  var nt=document.getElementById('nt-admin');
+  if(nt)nt.innerHTML='📊 Hisobot'+(reqs.length?'<span class="nd"></span>':'');
+  var nb=document.getElementById('notif-banner');
+  nb.className='notif-banner'+(reqs.length?' show':'');
+  renderReqs(reqs);
+  _all=gD().sort(function(a,b){return b.ts-a.ts;});
+  var tot=_all.length,uniq={};_all.forEach(function(r){uniq[r.pinfl]=1;});var uc=Object.keys(uniq).length;
+  var avg=tot?Math.round(_all.reduce(function(s,r){return s+r.pct;},0)/tot):0;
+  var top=tot?Math.max.apply(null,_all.map(function(r){return r.pct;})):0;
+  document.getElementById('astats').innerHTML=
+    '<div class="ac"><div class="acn">'+tot+'</div><div class="acl">Jami urinish</div></div>'+
+    '<div class="ac"><div class="acn">'+uc+'</div><div class="acl">Xodimlar</div></div>'+
+    '<div class="ac"><div class="acn">'+avg+'%</div><div class="acl">Ortacha</div></div>'+
+    '<div class="ac"><div class="acn">'+top+'%</div><div class="acl">Eng yuqori</div></div>';
+  renderT();renderTum();
+}
+
+function renderReqs(reqs){
+  var el=document.getElementById('rlist'),t=document.getElementById('rsect');
+  if(!reqs||!reqs.length){t.textContent='⏳ Kirish so\'rovlari';el.innerHTML='<div class="noreq">Hozircha yangi so\'rov yoq ✓</div>';return;}
+  t.innerHTML='⏳ Kirish so\'rovlari <span class="nd"></span>';
+  var exk={};el.querySelectorAll('[data-k]').forEach(function(e){exk[e.dataset.k]=1;});
+  reqs.forEach(function(r){
+    if(!exk[r.key]){
+      var div=document.createElement('div');div.className='reqc';div.dataset.k=r.key;
+      var d=new Date(r.ts),ds=d.getHours()+':'+String(d.getMinutes()).padStart(2,'0');
+      div.innerHTML='<div class="reqn">'+r.name+'</div>'+
+        '<div class="reqm">PINFL: <b>'+r.pinfl+'</b><br>'+r.tuman+' · '+r.lavozim+'<br><span style="color:#aaa">'+ds+'</span></div>'+
+        '<div class="reqb">'+
+          '<button class="btndn" onclick="respR(\''+r.key+'\',\'denied\')">✗ Rad etish</button>'+
+          '<button class="btnal" onclick="respR(\''+r.key+'\',\'allowed\')">✓ Ruxsat</button>'+
+        '</div><div class="reqtr">Avtomatik rad: <b id="rt'+r.key+'">60</b> s</div>';
+      el.appendChild(div);
+      if(!admT[r.key]){
+        var sec=60;
+        admT[r.key]=setInterval(function(){
+          sec--;var te=document.getElementById('rt'+r.key);
+          if(te)te.textContent=sec;if(sec<=0)respR(r.key,'denied');
+        },1000);
+      }
+    }
+  });
+  el.querySelectorAll('[data-k]').forEach(function(div){if(!reqs.some(function(r){return r.key===div.dataset.k;}))div.remove();});
+}
+
+function respR(key,st){
+  clearInterval(admT[key]);delete admT[key];updR(key,st);
+  var req=gR().find(function(r){return r.key===key;});
+  if(req){
+    var msg=st==='allowed'?
+      '✅ <b>'+req.name+'</b> — kirishga ruxsat berildi':
+      '❌ <b>'+req.name+'</b> — kirish rad etildi';
+    sendTG(msg);
+  }
+  var card=document.querySelector('[data-k="'+key+'"]');
+  if(card){
+    card.style.opacity='.5';card.style.pointerEvents='none';
+    var msg2=document.createElement('div');
+    msg2.style.cssText='text-align:center;font-size:13px;font-weight:600;margin-top:.5rem;color:'+(st==='allowed'?'#059669':'#dc2626');
+    msg2.textContent=st==='allowed'?'✓ Ruxsat berildi':'✗ Rad etildi';
+    card.appendChild(msg2);
+    setTimeout(function(){pollA();},1500);
+  }
+  if(TG) TG.HapticFeedback.impactOccurred('medium');
+}
+
+function renderT(){
+  var tb=document.getElementById('mtb');
+  if(!_all.length){tb.innerHTML='<tr><td colspan="5" class="te">Malumot topilmadi</td></tr>';return;}
+  tb.innerHTML=_all.map(function(r,i){
+    var cl=r.pct>=70?'pg':r.pct>=50?'py':'pr';
+    var d=new Date(r.ts),ds=d.getDate()+'.'+(d.getMonth()+1)+'.'+d.getFullYear();
+    return'<tr><td style="color:#aaa;font-size:11px">'+(i+1)+'</td>'+
+      '<td><b>'+r.name+'</b><br><span style="font-size:11px;color:#888">'+r.lavozim+'</span></td>'+
+      '<td style="font-size:12px">'+r.tuman+'</td>'+
+      '<td><span class="pill '+cl+'">'+r.pct+'%</span></td>'+
+      '<td style="font-size:11px;color:#999">'+ds+'</td></tr>';
+  }).join('');
+}
+
+function renderTum(){
+  var map={};_all.forEach(function(r){var t=r.tuman||'?';if(!map[t])map[t]={p:{},u:0,sum:0};map[t].u++;map[t].sum+=r.pct;map[t].p[r.pinfl]=1;});
+  var rows=Object.keys(map).map(function(t){return{t:t,v:map[t]};}).sort(function(a,b){return b.v.u-a.v.u;});
+  var tb=document.getElementById('ttb');
+  if(!rows.length){tb.innerHTML='<tr><td colspan="4" class="te">Malumot yoq</td></tr>';return;}
+  tb.innerHTML=rows.map(function(x){
+    var avg=Math.round(x.v.sum/x.v.u),cl=avg>=70?'pg':avg>=50?'py':'pr';
+    return'<tr><td><b>'+x.t+'</b></td><td>'+Object.keys(x.v.p).length+'</td><td>'+x.v.u+'</td><td><span class="pill '+cl+'">'+avg+'%</span></td></tr>';
+  }).join('');
+}
+
+function expCSV(){
+  var csv="T/r,F.I.Sh,PINFL,Tuman,Lavozim,Ball,Togri,Notogri,Sana\n";
+  _all.forEach(function(r,i){
+    var d=new Date(r.ts),ds=d.getDate()+'.'+(d.getMonth()+1)+'.'+d.getFullYear();
+    csv+=(i+1)+',"'+r.name+'","'+r.pinfl+'","'+(r.tuman||'')+'","'+(r.lavozim||'')+'",'+r.pct+','+r.corr+','+r.wrn+',"'+ds+'"\n';
+  });
+  var a=document.createElement('a');a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);
+  a.download='kadastr_'+new Date().toISOString().slice(0,10)+'.csv';a.click();
+}
+
+function show(id){document.querySelectorAll('.scr').forEach(function(s){s.classList.remove('on');});document.getElementById(id).classList.add('on');}
+
+// ========== SAVOLLAR ==========
+const Q=[
+  {h:'URQ-803',q:"URQ-803 qonuniga ko'ra ko'chmas mulkka bo'lgan huquqlarni davlat ro'yxatidan o'tkazishni qaysi organ amalga oshiradi?",o:["Adliya vazirligi","Iqtisodiyot va moliya vazirligi huzuridagi Kadastr agentligining DKP","Soliq qo'mitasi","Mahalliy hokimiyat"],c:1,e:"Ko'chmas mulkka bo'lgan huquqlarni davlat ro'yxatidan o'tkazishni <b>Iqtisodiyot va moliya vazirligi huzuridagi Kadastr agentligining Davlat kadastrlari palatasi</b> amalga oshiradi."},
+  {h:'URQ-803',q:"URQ-803 qonuni qachon kuchga kirgan?",o:["28.11.2022","01.01.2023","01.03.2023","15.12.2022"],c:2,e:"Qonun 28.11.2022-yilda qabul qilingan, <b>01.03.2023</b>-yilda kuchga kirgan."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha ro'yxatdan o'tkazishning asosiy prinsiplaridan biri?",o:["Yashirinlik","Davlat ro'yxatidan o'tkazilgan huquqlarning ustuvorligi","Ko'ngillilik","Bir martalik ro'yxat"],c:1,e:"<b>Davlat ro'yxatidan o'tkazilgan ko'chmas mulkka bo'lgan huquqlarning ustuvorligi</b> URQ-803 asosiy prinsiplaridan biridir."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha ko'chmas mulkka bo'lgan huquqlar to'g'risidagi axborot qanday?",o:["Maxfiy","Ochiq","Faqat egasiga ma'lum","Idoraviy"],c:1,e:"URQ-803 prinsiplaridan biri — ko'chmas mulkka bo'lgan huquqlar to'g'risidagi <b>axborotning ochiqligi</b>."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha ko'chmas mulkka bo'lgan huquqlarni ro'yxatdan o'tkazish qanday?",o:["Ko'ngilli","Majburiy","Ixtiyoriy","Faqat suddan keyin"],c:1,e:"URQ-803 prinsiplaridan biri — ko'chmas mulkka bo'lgan huquqlarni davlat ro'yxatidan o'tkazishning <b>majburiyligi</b>."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha qonunchilikni buzganlik uchun javobgarlik qaysi moddada?",o:["15-modda","45-modda","71-modda","73-modda"],c:2,e:"<b>71-modda</b> ko'chmas mulkka bo'lgan huquqlarni davlat ro'yxatidan o'tkazish to'g'risidagi qonunchilikni buzganlik uchun javobgarlikka bag'ishlangan."},
+  {h:'URQ-937',q:"URQ-937-son Qonun (05.08.2024) nima haqida?",o:["Ko'chmas mulkni ijaraga berish","O'zboshimchalik bilan egallab olingan yer uchastkalariga bo'lgan huquqlarni e'tirof etish","Kadastr raqamlari","Yer solig'i"],c:1,e:"<b>URQ-937</b> — o'zboshimchalik bilan egallab olingan yer uchastkalariga hamda ularda qurilgan bino va inshootlarga bo'lgan huquqlarni e'tirof etish to'g'risidagi qonun (2024)."},
+  {h:'URQ-937',q:"URQ-937 11-moddasiga ko'ra ijara huquqini e'tirof etish kimga tatbiq etiladi?",o:["Xorijiy investorlarga","Dehqon xo'jaliklariga","Fuqarolar, YaTT va rezident yuridik shaxslarga","Davlat korxonalariga"],c:2,e:"<b>11-modda:</b> Fuqarolar, YaTT va rezident yuridik shaxslar uchun ijara huquqi e'tirof etiladi."},
+  {h:'VMQ 389-son',q:"VMQ 389-son qaysi Prezident Farmoni ijrosini ta'minlash maqsadida qabul qilingan?",o:["PF-5930","PF-6061","PF-6199","PF-5969"],c:1,e:"VMQ 389-son <b>PF-6061-son Farmon</b> ijrosi uchun qabul qilingan."},
+  {h:'VMQ 389-son',q:"VMQ 389-son kuchga kirishi bilan qaysi eski qaror bekor qilindi?",o:["1997-yil 278-son VMQ qarori","2014-yil 186-son VMQ qarori","2020-yil 535-son VMQ qarori","1999-yil 422-son VMQ qarori"],c:0,e:"VMQ 389-son kuchga kirishi bilan <b>1997-yil 2-iyundagi 278-son</b> VMQ qarori bekor qilindi."},
+  {h:'VMQ 186-son',q:"VMQ 186-son (10.07.2014) asosan nimani tartibga soladi?",o:["Kadastr organlari tuzilmasi","Ko'chmas mulk ob'ektlari davlat kadastri sohasida xizmatlar narxlarini belgilash tartibi","Yer uchastkalarini berish","Ko'chmas mulkni garov"],c:1,e:"VMQ 186-son <b>ko'chmas mulk ob'ektlarining davlat kadastri sohasida davlat xizmatlari narxlarini belgilash tartibini</b> o'rnatadi."},
+  {h:'VMQ 186-son',q:"VMQ 186-son 2-bandiga ko'ra kadastr xizmatlari qiymatidan necha foizi jamg'armaga o'tkaziladi?",o:["5%","10%","15%","20%"],c:1,e:"Ko'chmas mulk ob'ektlariga kadastr ishini tayyorlash va huquqlarni ro'yxatdan o'tkazish xizmatlari qiymatidan <b>10 foizi</b> Kadastr agentligining budjetdan tashqari jamg'armasiga o'tkaziladi."},
+  {h:'VMQ 535-son',q:"VMQ 535-son 2-ilovasi reglamentida 'ro'yxatdan o'tkazuvchi organ' kim?",o:["Adliya vazirligi","Iqtisodiyot va moliya vazirligi huzuridagi Kadastr agentligining DKP","Soliq qo'mitasi","Hokimiyat"],c:1,e:"<b>Ro'yxatdan o'tkazuvchi organ</b> — Iqtisodiyot va moliya vazirligi huzuridagi Kadastr agentligining Davlat kadastrlari palatasi."},
+  {h:'VMQ 535-son',q:"VMQ 535-son bo'yicha kadastr pasporti uchun to'lov qaysi hujjat asosida belgilanadi?",o:["VMQ 389-son","VMQ 186-son (10.07.2014)","URQ-803","Soliq kodeksi"],c:1,e:"Kadastr pasportini berish uchun undiriladigan to'lov miqdori <b>VMQ 186-son (2014-yil 10-iyuldagi)</b> asosida belgilanadi."},
+  {h:'Yer kodeksi',q:"O'zbekiston Respublikasining Yer kodeksi qachon qabul qilingan?",o:["15.04.1999","30.04.1998","01.01.2000","28.11.2022"],c:1,e:"O'zbekiston Respublikasining Yer kodeksi <b>30.04.1998</b> yilda qabul qilingan."},
+  {h:'Yer kodeksi',q:"Yer kodeksiga ko'ra yer uchastkasiga bo'lgan huquqlar qachon yuzaga keladi?",o:["Shartnoma imzolanganda","Kadastr ro'yxatiga kiritilganda","Hokimiyat qarorida","To'lov amalga oshirilganda"],c:1,e:"<b>Yer kodeksi:</b> yer uchastkasiga bo'lgan huquqlar <b>kadastr ro'yxatiga kiritilgan paytdan</b> boshlab yuzaga keladi."},
+  {h:'Yer kodeksi',q:"Yer uchastkasining maqsadli tayinlanishini o'zgartirish kimning vakolatida?",o:["Yer egasi xohishi","Vakolatli organlar belgilangan tartibda","Kadastr palatasi","Soliq organlari"],c:1,e:"<b>Yer kodeksi:</b> maqsadli tayinlanishni o'zgartirish faqat <b>vakolatli organlar</b> tomonidan belgilangan tartibda amalga oshiriladi."},
+  {h:'Yer kodeksi',q:"Yer kodeksiga ko'ra ro'yxatdan o'tmagan yer uchastkasiga bo'lgan huquqlar?",o:["Tan olinadi","Tan olinmaydi","Shartli tan olinadi","Sud qaroriga ko'ra"],c:1,e:"<b>Yer kodeksi:</b> ro'yxatdan o'tmagan yer uchastkasiga nisbatan huquqlar <b>tan olinmaydi</b>."},
+  {h:'Umumiy',q:"Qaysi hujjat ko'chmas mulkka bo'lgan huquqlarni ro'yxatdan o'tkazishning asosiy prinsiplarini belgilaydi?",o:["VMQ 389-son","VMQ 535-son","URQ-803-son","VMQ 186-son"],c:2,e:"Ko'chmas mulkka bo'lgan huquqlarni davlat ro'yxatidan o'tkazishning asosiy prinsiplari <b>URQ-803-son qonunida</b> belgilangan."},
+  {h:'Umumiy',q:"VMQ 535-son va VMQ 186-son o'rtasidagi bog'liqlik?",o:["Ular bir-birini bekor qiladi","VMQ 535-son bo'yicha kadastr pasporti to'lovi VMQ 186-son asosida belgilanadi","Ular bir xil hujjat","Har xil sohalarga"],c:1,e:"VMQ 535-son 2-ilova reglamentiga ko'ra kadastr pasportini berish uchun undiriladigan <b>to'lov miqdori VMQ 186-son asosida belgilanadi</b>."}
+];
+</script>
+</body>
+</html>
