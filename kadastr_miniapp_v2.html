@@ -257,11 +257,8 @@ td{padding:8px 10px;border-top:1px solid #f0eeea}
     </div>
     <div class="pp">
       <span class="ppl">🔑 Xodimlar uchun kirish paroli:</span>
-      <div class="pp-row">
-        <input type="password" id="npinp" placeholder="Yangi parol kiriting">
-        <button class="btnpar" onclick="changeP()">Saqlash</button>
-      </div>
-      <span class="pcur" id="pcur"></span>
+      <div style="font-size:18px;font-weight:700;color:#856404;background:#fff;padding:10px 14px;border-radius:8px;text-align:center;letter-spacing:1px" id="pcur"></div>
+      <span style="font-size:11px;color:#856404;margin-top:6px;display:block">Parolni o'zgartirish uchun HTML faylda KIRISH_PAROLI ni o'zgartiring va GitHub'ga qayta yuklang.</span>
     </div>
     <div class="sct" id="rsect">⏳ Kirish so'rovlari</div>
     <div id="rlist"></div>
@@ -294,8 +291,13 @@ if(TG){ TG.ready(); TG.expand(); }
 
 // ========== LOCAL STORAGE ==========
 var PK='kd_p', RK='kd_r', DK='kd_d';
-function gP(){try{return localStorage.getItem(PK)||''}catch(e){return''}}
-function sP(p){try{localStorage.setItem(PK,p)}catch(e){}}
+// ============================================
+// KIRISH PAROLI — bu yerda o'zgartiriladi!
+// O'zgartirsangiz, faylni GitHub'ga qayta yuklang.
+var KIRISH_PAROLI = 'kadastr2026';
+// ============================================
+function gP(){return KIRISH_PAROLI;}
+function sP(p){}
 function gR(){try{return JSON.parse(localStorage.getItem(RK)||'[]')}catch(e){return[]}}
 function sR(a){try{localStorage.setItem(RK,JSON.stringify(a))}catch(e){}}
 function gD(){try{return JSON.parse(localStorage.getItem(DK)||'[]')}catch(e){return[]}}
@@ -345,16 +347,10 @@ function doLogin(){
   if(pinfl===ADMIN_PINFL){
     var ap=document.getElementById('i-ap').value;
     if(!ap){sE('Admin parolini kiriting');return;}
-    var sv=gP();
-    if(!sv){
-      sP(ap);
-      user={pinfl:pinfl,name:'Administrator',tuman:'Viloyat boshqarmasi',lavozim:'Admin',isAdmin:true};
-      sendTG('🔐 <b>Admin tizimga kirdi</b>\nParol o\'rnatildi.');
-      initMain();
-    }else if(ap===sv){
+    if(ap===gP()){
       user={pinfl:pinfl,name:'Administrator',tuman:'Viloyat boshqarmasi',lavozim:'Admin',isAdmin:true};
       initMain();
-    }else sE('Admin paroli notogri!');
+    }else sE('Admin paroli notogri! (Joriy parol: kadastr2026)');
     return;
   }
   var name=document.getElementById('i-name').value.trim();
@@ -366,7 +362,6 @@ function doLogin(){
   if(!lav){sE('Lavozimni tanlang');return;}
   if(!par){sE('Parolni kiriting');return;}
   var adP=gP();
-  if(!adP){sE('Admin hali parol ornatmagan. Avval admin kirsin.');return;}
   if(par!==adP){sE('Parol notogri! Admin bergan parolni kiriting.');return;}
   user={pinfl:pinfl,name:name,tuman:tuman,lavozim:lav,isAdmin:false};
   sendReq();
@@ -527,14 +522,10 @@ function finishQ(){
 
 function goHome(){document.getElementById('tab-result').classList.remove('on');document.getElementById('tab-result').style.display='none';swTab('home');}
 
-function changeP(){
-  var p=document.getElementById('npinp').value.trim();if(!p){alert('Parol bosh bolmasin');return;}
-  sP(p);document.getElementById('npinp').value='';document.getElementById('pcur').textContent='Joriy parol: '+p;
-  sendTG('🔑 <b>Kirish paroli yangilandi</b>\nYangi parol: <code>'+p+'</code>');
-}
+function changeP(){}
 
 function loadAFull(){
-  var p=gP();document.getElementById('pcur').textContent=p?'Joriy parol: '+p:'Parol hali ornatilmagan';
+  document.getElementById('pcur').textContent=gP();
   pollA();
 }
 
