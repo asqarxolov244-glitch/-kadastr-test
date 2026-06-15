@@ -24,15 +24,6 @@ body{background:#f0f2f5;color:#1a1a1a;min-height:100vh;padding-bottom:30px}
 .err{background:#fef2f2;color:#991b1b;border-radius:10px;padding:9px 13px;font-size:13px;margin-bottom:.75rem;display:none}
 .btnl{width:100%;padding:13px;background:#4f46e5;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;margin-top:.25rem}
 .hint{font-size:11px;color:#bbb;text-align:center;margin-top:.75rem}
-/* WAIT */
-.wb{background:#fff;border-radius:16px;padding:2rem;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.06)}
-.pulse{font-size:42px;animation:pulse 1.5s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.wt{font-size:17px;font-weight:700;margin:.75rem 0 .4rem}
-.ws{font-size:13px;color:#666;line-height:1.55;margin-bottom:1.25rem}
-.wn{font-size:36px;font-weight:700;color:#4f46e5;margin-bottom:.25rem}
-.wl{font-size:12px;color:#999;margin-bottom:1.25rem}
-.btnc{padding:10px 24px;background:#f5f4f0;border:1.5px solid #e0e0e0;border-radius:10px;font-size:13px;cursor:pointer;color:#666}
 /* TOPBAR */
 .topbar{background:#fff;border-radius:12px;padding:.75rem 1rem;margin-bottom:.85rem;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 5px rgba(0,0,0,.05)}
 .badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:2px}
@@ -42,15 +33,23 @@ body{background:#f0f2f5;color:#1a1a1a;min-height:100vh;padding-bottom:30px}
 .nav{display:flex;gap:6px;margin-bottom:.85rem}
 .ntab{padding:8px 0;border-radius:9px;font-size:13px;font-weight:500;cursor:pointer;border:1.5px solid #e0e0e0;background:#fff;color:#666;flex:1;text-align:center}
 .ntab.on{background:#4f46e5;color:#fff;border-color:#4f46e5}
-.nd{display:inline-block;width:7px;height:7px;border-radius:50%;background:#ef4444;margin-left:4px;animation:blink 1s infinite;vertical-align:middle}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 /* DASH */
 .dg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:.85rem}
 .dc{background:#fff;border-radius:11px;padding:.85rem .5rem;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.05)}
 .dn{font-size:22px;font-weight:700;color:#4f46e5}.dl{font-size:11px;color:#666;margin-top:2px}
+/* FILTER */
+.fbox{background:#fff;border-radius:12px;padding:.85rem 1rem;margin-bottom:.75rem;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.fbox label{font-size:11px;font-weight:600;color:#666;display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px}
+.frow{display:flex;gap:7px;align-items:center}
+.frow select{flex:1;padding:8px 10px;border:1.5px solid #e0e0e0;border-radius:9px;font-size:13px;color:#1a1a1a;background:#fff}
+.frow select:focus{outline:none;border-color:#4f46e5}
+.fnums{display:flex;gap:5px}
+.fnums button{padding:7px 10px;border:1.5px solid #e0e0e0;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;background:#fff;color:#666}
+.fnums button.on{background:#4f46e5;color:#fff;border-color:#4f46e5}
 .sc{background:linear-gradient(135deg,#4f46e5,#7c3aed);border-radius:14px;padding:1.25rem 1.4rem;color:#fff;margin-bottom:.85rem;cursor:pointer}
 .sc h3{font-size:16px;font-weight:700;margin-bottom:.3rem}
 .sc p{font-size:12px;opacity:.8;margin-bottom:.75rem}
+.sc .qinfo{font-size:11px;opacity:.7;margin-top:.3rem}
 .go{display:inline-block;background:rgba(255,255,255,.2);padding:7px 18px;border-radius:9px;font-size:13px;font-weight:600}
 .sct{font-size:12px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.5rem}
 .hi{background:#fff;border-radius:10px;padding:.7rem .9rem;margin-bottom:5px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
@@ -94,14 +93,6 @@ body{background:#f0f2f5;color:#1a1a1a;min-height:100vh;padding-bottom:30px}
 .wi:last-child{border-bottom:none}
 .wih{font-size:11px;color:#888;margin-bottom:2px}.wic{color:#059669;font-size:12px;margin-top:3px}
 /* ADMIN */
-.reqc{background:#fff;border-radius:12px;padding:1rem;margin-bottom:.7rem;box-shadow:0 1px 5px rgba(0,0,0,.05);border-left:4px solid #f59e0b}
-.reqn{font-size:14px;font-weight:700;margin-bottom:.3rem}
-.reqm{font-size:12px;color:#666;margin-bottom:.75rem;line-height:1.5}
-.reqb{display:flex;gap:8px}
-.btnal{padding:10px 0;background:#059669;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;flex:1}
-.btndn{padding:10px 0;background:#dc2626;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;flex:1}
-.reqtr{font-size:11px;color:#aaa;text-align:center;margin-top:.5rem}
-.noreq{text-align:center;padding:1.25rem;background:#f5f4f0;border-radius:10px;color:#888;font-size:13px;margin-bottom:.85rem}
 .ag{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem}
 .ac{background:#fff;border-radius:11px;padding:.8rem;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.05)}
 .acn{font-size:20px;font-weight:700;color:#4f46e5}.acl{font-size:11px;color:#888;margin-top:2px}
@@ -114,13 +105,16 @@ td{padding:8px 10px;border-top:1px solid #f0eeea}
 .te{text-align:center;padding:1.5rem;color:#bbb;font-size:13px}
 .pp{background:#fff3cd;border-radius:10px;padding:.85rem 1rem;margin-bottom:.85rem}
 .ppl{font-size:13px;font-weight:600;color:#856404;display:block;margin-bottom:.5rem}
-.pp-row{display:flex;gap:8px;align-items:center}
-.pp input{flex:1;padding:8px 11px;border:1.5px solid #ffc107;border-radius:8px;font-size:13px;background:#fff}
-.btnpar{padding:8px 14px;background:#856404;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer}
-.pcur{font-size:12px;color:#856404;margin-top:6px;display:block}
 .btncsv{padding:8px 14px;background:#059669;color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer}
-.notif-banner{background:#fff;border:1.5px solid #f59e0b;border-radius:12px;padding:.85rem 1rem;margin-bottom:.85rem;font-size:13px;color:#92400e;display:none;align-items:flex-start;gap:10px}
-.notif-banner.show{display:flex}
+/* CLOUD STATUS */
+.cloud-status{background:#e8f4fd;border-radius:10px;padding:.6rem .9rem;font-size:12px;color:#0c5a8a;margin-bottom:.75rem;display:flex;align-items:center;gap:7px}
+.cloud-status.err{background:#fef2f2;color:#991b1b}
+.cloud-status.ok{background:#ecfdf5;color:#065f46}
+.cloud-dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex-shrink:0}
+/* HUJJAT FILTER PILLS */
+.hpills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.85rem}
+.hpill{padding:5px 11px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;border:1.5px solid #e0e0e0;background:#fff;color:#666}
+.hpill.on{background:#4f46e5;color:#fff;border-color:#4f46e5}
 </style>
 </head>
 <body>
@@ -181,18 +175,6 @@ td{padding:8px 10px;border-top:1px solid #f0eeea}
 </div></div>
 </div>
 
-<!-- KUTISH -->
-<div class="scr" id="s-wait">
-<div class="page"><div class="wb">
-  <div class="pulse">⏳</div>
-  <div class="wt">Admin tasdiqlashini kuting</div>
-  <div class="ws">So'rovingiz adminga <b>Telegram orqali</b> yuborildi.<br>Admin ruxsat berguncha kuting.</div>
-  <div class="wn" id="wtimer">60</div>
-  <div class="wl">soniya qoldi</div>
-  <button class="btnc" onclick="cancelWait()">Bekor qilish</button>
-</div></div>
-</div>
-
 <!-- MAIN -->
 <div class="scr" id="s-main">
 <div class="page">
@@ -208,10 +190,27 @@ td{padding:8px 10px;border-top:1px solid #f0eeea}
 
   <!-- Bosh sahifa -->
   <div class="scr" id="tab-home">
+    <div id="cloud-bar" class="cloud-status">
+      <div class="cloud-dot"></div>
+      <span id="cloud-msg">Statistika yuklanmoqda...</span>
+    </div>
     <div class="dg" id="udash"></div>
+    <!-- Filter -->
+    <div class="fbox">
+      <label>Hujjat bo'yicha filter</label>
+      <div class="hpills" id="hpills"></div>
+      <div class="frow" style="margin-top:8px">
+        <select id="f-count">
+          <option value="10">10 ta savol</option>
+          <option value="20">20 ta savol</option>
+          <option value="30">30 ta savol</option>
+          <option value="50">50 ta savol</option>
+        </select>
+      </div>
+    </div>
     <div class="sc" onclick="startQuiz()">
       <h3>📝 Testni boshlash</h3>
-      <p>6 ta me'yoriy hujjat · 10 ta tasodifiy savol</p>
+      <p id="sc-desc">6 ta me'yoriy hujjat · tasodifiy savollar</p>
       <div class="go">Boshlash →</div>
     </div>
     <div class="sct">Oxirgi natijalar</div>
@@ -254,11 +253,14 @@ td{padding:8px 10px;border-top:1px solid #f0eeea}
     <div class="pp">
       <span class="ppl">🔑 Xodimlar uchun kirish paroli:</span>
       <div style="font-size:18px;font-weight:700;color:#856404;background:#fff;padding:10px 14px;border-radius:8px;text-align:center;letter-spacing:1px" id="pcur"></div>
-      <span style="font-size:11px;color:#856404;margin-top:6px;display:block">Parolni o'zgartirish uchun HTML faylda KIRISH_PAROLI ni o'zgartiring va GitHub'ga qayta yuklang.</span>
+    </div>
+    <div id="cloud-bar-admin" class="cloud-status">
+      <div class="cloud-dot"></div>
+      <span id="cloud-msg-admin">Cloud statistika yuklanmoqda...</span>
     </div>
     <div class="ag" id="astats"></div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;margin-top:.5rem">
-      <div class="sct" style="margin-bottom:0">Barcha natijalar</div>
+      <div class="sct" style="margin-bottom:0">Barcha natijalar (barcha qurilmalar)</div>
       <button class="btncsv" onclick="expCSV()">⬇ CSV</button>
     </div>
     <div class="tblw">
@@ -279,47 +281,106 @@ td{padding:8px 10px;border-top:1px solid #f0eeea}
 var BOT_TOKEN = '8885477150:AAHUe19BSwq8JyHtRjHuAWmZzFkB8znu9zY';
 var ADMIN_TG_ID = '1233530096';
 var ADMIN_PINFL = '00000000000000';
-
-var TG = window.Telegram && window.Telegram.WebApp;
-if(TG){ TG.ready(); TG.expand(); }
-
-// ========== LOCAL STORAGE ==========
-var PK='kd_p', RK='kd_r', DK='kd_d';
-// ============================================
-// KIRISH PAROLI — bu yerda o'zgartiriladi!
-// O'zgartirsangiz, faylni GitHub'ga qayta yuklang.
 var KIRISH_PAROLI = 'kadastr2026';
-// ============================================
-function gP(){return KIRISH_PAROLI;}
-function sP(p){}
-function gR(){try{return JSON.parse(localStorage.getItem(RK)||'[]')}catch(e){return[]}}
-function sR(a){try{localStorage.setItem(RK,JSON.stringify(a))}catch(e){}}
-function gD(){try{return JSON.parse(localStorage.getItem(DK)||'[]')}catch(e){return[]}}
-function sD(a){try{localStorage.setItem(DK,JSON.stringify(a))}catch(e){}}
-function addR(r){var a=gR();a.push(r);sR(a);}
-function addD(r){var a=gD();a.push(r);sD(a);}
-function updR(key,st){var a=gR();for(var i=0;i<a.length;i++){if(a[i].key===key){a[i].status=st;break;}}sR(a);}
-function myD(p){return gD().filter(function(r){return r.pinfl===p;}).sort(function(a,b){return b.ts-a.ts;})}
 
-// ========== TELEGRAM XABAR ==========
-function sendTG(text){
-  fetch('https://api.telegram.org/bot'+BOT_TOKEN+'/sendMessage',{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({chat_id:ADMIN_TG_ID,text:text,parse_mode:'HTML'})
-  }).catch(function(){});
+// ========== JSONBIN.IO CLOUD ==========
+// JSONBin.io'da BEPUL hisob oching: https://jsonbin.io
+// 1. Sign up → API Keys → Secret key ni oling
+// 2. Create a Bin → Bin ID ni oling
+// Shularni shu yerga yozing:
+var JSONBIN_SECRET = '$2a$10$SIZNING_SECRET_KEYINGIZ'; // <-- o'zgartiring
+var JSONBIN_BIN_ID = 'SIZNING_BIN_IDINGIZ';           // <-- o'zgartiring
+var CLOUD_ENABLED = false; // JSONBin sozlagandan keyin true qiling
+
+// JSONBin'dan barcha natijalarni olish
+async function cloudGet(){
+  if(!CLOUD_ENABLED) return gD();
+  try{
+    var r=await fetch('https://api.jsonbin.io/v3/b/'+JSONBIN_BIN_ID+'/latest',{
+      headers:{'X-Master-Key':JSONBIN_SECRET}
+    });
+    var j=await r.json();
+    return j.record && j.record.results ? j.record.results : [];
+  }catch(e){ return gD(); }
 }
 
-// ========== STATE ==========
-var user=null,qs=[],cur=0,corr=0,wrn=0,ans=false,wqs=[];
-var wInt=null,pInt=null,admT={},pKey=null,_all=[];
+// JSONBin'ga yangi natija qo'shish
+async function cloudAdd(entry){
+  if(!CLOUD_ENABLED){ addD(entry); return; }
+  try{
+    // Avval hozirgi ma'lumotlarni olamiz
+    var all = await cloudGet();
+    all.push(entry);
+    // Yangilaymiz
+    await fetch('https://api.jsonbin.io/v3/b/'+JSONBIN_BIN_ID,{
+      method:'PUT',
+      headers:{'Content-Type':'application/json','X-Master-Key':JSONBIN_SECRET},
+      body:JSON.stringify({results:all})
+    });
+  }catch(e){ addD(entry); }
+  // Har doim localga ham saqlaymiz (backup)
+  addD(entry);
+}
 
-// Telegram user ma'lumotlari
+async function setCloudStatus(ok, msg, elId, barId){
+  var bar=document.getElementById(barId||'cloud-bar');
+  var msgEl=document.getElementById(elId||'cloud-msg');
+  if(!bar||!msgEl)return;
+  bar.className='cloud-status '+(ok?'ok':'err');
+  msgEl.textContent=msg;
+}
+
+// ========== TELEGRAM ==========
+var TG = window.Telegram && window.Telegram.WebApp;
+if(TG){ TG.ready(); TG.expand(); }
 var tgUser = TG && TG.initDataUnsafe && TG.initDataUnsafe.user;
 if(tgUser){
   document.getElementById('tginfo').style.display='flex';
   document.getElementById('tgname').textContent=(tgUser.first_name||'')+' '+(tgUser.last_name||'')+' (Telegram)';
 }
+
+function sendTG(text){
+  fetch('https://api.telegram.org/bot'+BOT_TOKEN+'/sendMessage',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({chat_id:ADMIN_TG_ID,text:text,parse_mode:'HTML'})
+  }).catch(function(){});
+}
+
+// ========== LOCAL STORAGE (backup) ==========
+var RK='kd_r3', DK='kd_d3';
+function gP(){return KIRISH_PAROLI;}
+function gD(){try{return JSON.parse(localStorage.getItem(DK)||'[]')}catch(e){return[]}}
+function sD(a){try{localStorage.setItem(DK,JSON.stringify(a))}catch(e){}}
+function addD(r){var a=gD();a.push(r);sD(a);}
+function myD(p){return gD().filter(function(r){return r.pinfl===p;}).sort(function(a,b){return b.ts-a.ts;})}
+
+// ========== HUJJAT FILTERLARI ==========
+var HUJJATLAR = ['Barchasi','URQ-803','URQ-937','VMQ 389-son','VMQ 186-son','VMQ 535-son','Yer kodeksi'];
+var selHujjat = 'Barchasi';
+var selCount = 10;
+
+function buildPills(){
+  var cont=document.getElementById('hpills');
+  cont.innerHTML=HUJJATLAR.map(function(h){
+    return '<button class="hpill'+(h===selHujjat?' on':'')+'" onclick="selH(\''+h+'\')">'+(h==='Barchasi'?'📚 Barchasi':h)+'</button>';
+  }).join('');
+}
+
+function selH(h){
+  selHujjat=h;
+  buildPills();
+  var pool=getPool();
+  document.getElementById('sc-desc').textContent=(h==='Barchasi'?'6 ta hujjat':h)+' · '+pool.length+' ta savol mavjud';
+}
+
+function getPool(){
+  if(selHujjat==='Barchasi') return Q;
+  return Q.filter(function(q){return q.h===selHujjat;});
+}
+
+// ========== STATE ==========
+var user=null, qs=[], cur=0, corr=0, wrn=0, ans=false, wqs=[];
+var _all=[];
 
 function onP(){
   var v=document.getElementById('i-pinfl').value;
@@ -337,14 +398,14 @@ function hE(){document.getElementById('lerr').style.display='none';}
 function doLogin(){
   hE();
   var pinfl=document.getElementById('i-pinfl').value.trim();
-  if(pinfl.length!==14){sE('PINFL 14 ta raqamdan iborat bolishi kerak');return;}
+  if(pinfl.length!==14){sE('PINFL 14 ta raqamdan iborat bo\'lishi kerak');return;}
   if(pinfl===ADMIN_PINFL){
     var ap=document.getElementById('i-ap').value;
     if(!ap){sE('Admin parolini kiriting');return;}
     if(ap===gP()){
       user={pinfl:pinfl,name:'Administrator',tuman:'Viloyat boshqarmasi',lavozim:'Admin',isAdmin:true};
       initMain();
-    }else sE('Admin paroli notogri! (Joriy parol: kadastr2026)');
+    }else sE('Admin paroli noto\'g\'ri!');
     return;
   }
   var name=document.getElementById('i-name').value.trim();
@@ -355,54 +416,14 @@ function doLogin(){
   if(!tuman){sE('Tuman/shaharni tanlang');return;}
   if(!lav){sE('Lavozimni tanlang');return;}
   if(!par){sE('Parolni kiriting');return;}
-  var adP=gP();
-  if(par!==adP){sE('Parol notogri! Admin bergan parolni kiriting.');return;}
+  if(par!==gP()){sE('Parol noto\'g\'ri! Admin bergan parolni kiriting.');return;}
   user={pinfl:pinfl,name:name,tuman:tuman,lavozim:lav,isAdmin:false};
-  // Telegram'ga kirish haqida xabar yuborish (tasdiqlashsiz)
-  sendTG('✅ <b>Tizimga kirdi</b>\n\n'+
-    '👤 <b>Ism:</b> '+user.name+'\n'+
-    '🪪 <b>PINFL:</b> <code>'+user.pinfl+'</code>\n'+
-    '📍 <b>Tuman:</b> '+user.tuman+'\n'+
-    '💼 <b>Lavozim:</b> '+user.lavozim);
+  sendTG('✅ <b>Tizimga kirdi</b>\n\n👤 <b>Ism:</b> '+user.name+'\n🪪 <b>PINFL:</b> <code>'+user.pinfl+'</code>\n📍 <b>Tuman:</b> '+user.tuman+'\n💼 <b>Lavozim:</b> '+user.lavozim);
   initMain();
 }
 
-function sendReq(){
-  var key='r'+Date.now();
-  pKey=key;
-  var req={key:key,pinfl:user.pinfl,name:user.name,tuman:user.tuman,lavozim:user.lavozim,ts:Date.now(),status:'pending'};
-  addR(req);
-
-  // Telegram orqali adminga xabar
-  var msg='🔔 <b>Yangi kirish so\'rovi!</b>\n\n'+
-    '👤 <b>Ism:</b> '+user.name+'\n'+
-    '🪪 <b>PINFL:</b> <code>'+user.pinfl+'</code>\n'+
-    '📍 <b>Tuman:</b> '+user.tuman+'\n'+
-    '💼 <b>Lavozim:</b> '+user.lavozim+'\n\n'+
-    '✅ Ruxsat berish uchun tizimni oching va tasdiqlang!';
-  sendTG(msg);
-
-  show('s-wait');
-  var sec=60;
-  document.getElementById('wtimer').textContent=sec;
-  wInt=setInterval(function(){
-    sec--;
-    document.getElementById('wtimer').textContent=sec;
-    if(sec<=0){clearInterval(wInt);denyW();return;}
-    var reqs=gR(),found=null;
-    for(var i=0;i<reqs.length;i++){if(reqs[i].key===pKey){found=reqs[i];break;}}
-    if(!found||found.status==='denied'){clearInterval(wInt);denyW();}
-    else if(found.status==='allowed'){clearInterval(wInt);initMain();}
-  },1000);
-}
-
-function denyW(){user=null;pKey=null;show('s-login');sE('Kirish rad etildi yoki muddat tugadi.');}
-function cancelWait(){clearInterval(wInt);user=null;pKey=null;show('s-login');}
-
 function doLogout(){
-  clearInterval(wInt);clearInterval(pInt);
-  Object.keys(admT).forEach(function(k){clearInterval(admT[k]);});admT={};
-  user=null;pKey=null;
+  user=null;
   ['i-pinfl','i-ap','i-name','i-par'].forEach(function(id){document.getElementById(id).value='';});
   document.getElementById('i-tuman').value='';document.getElementById('i-lav').value='';
   document.getElementById('asec').style.display='none';document.getElementById('xsec').style.display='none';
@@ -421,7 +442,6 @@ function initMain(){
     d.onclick=function(){swTab(t.id,d);};d.innerHTML=t.l;nav.appendChild(d);
   });
   swTab('home');
-  if(user.isAdmin) pInt=setInterval(pollA,2000);
 }
 
 function swTab(id,el){
@@ -432,28 +452,52 @@ function swTab(id,el){
   document.querySelectorAll('.ntab').forEach(function(n){n.classList.remove('on');});
   if(el)el.classList.add('on');
   else{var e2=document.getElementById('nt-'+id);if(e2)e2.classList.add('on');}
-  if(id==='home')loadH();if(id==='admin')loadAFull();
+  if(id==='home')loadH();
+  if(id==='admin')loadAFull();
 }
 
-function loadH(){
+async function loadH(){
+  buildPills();
+  var pool=getPool();
+  document.getElementById('sc-desc').textContent='6 ta hujjat · '+pool.length+' ta savol mavjud';
   var res=myD(user.pinfl);
   var tot=res.length,avg=tot?Math.round(res.reduce(function(s,r){return s+r.pct;},0)/tot):0;
   var best=tot?Math.max.apply(null,res.map(function(r){return r.pct;})):0;
   document.getElementById('udash').innerHTML=
     '<div class="dc"><div class="dn">'+tot+'</div><div class="dl">Urinishlar</div></div>'+
-    '<div class="dc"><div class="dn">'+avg+'%</div><div class="dl">Ortacha</div></div>'+
+    '<div class="dc"><div class="dn">'+avg+'%</div><div class="dl">O\'rtacha</div></div>'+
     '<div class="dc"><div class="dn">'+best+'%</div><div class="dl">Eng yuqori</div></div>';
+
+  // Cloud status
+  if(CLOUD_ENABLED){
+    try{
+      await cloudGet();
+      setCloudStatus(true,'☁️ Cloud statistika ulangan — barcha qurilmalar sinxronlashadi');
+    }catch(e){
+      setCloudStatus(false,'⚠️ Cloud ulanmadi — faqat bu qurilma statistikasi');
+    }
+  }else{
+    setCloudStatus(false,'📴 Cloud o\'chirilgan — faqat bu qurilma statistikasi saqlanadi','cloud-msg','cloud-bar');
+    document.getElementById('cloud-bar').className='cloud-status';
+    document.getElementById('cloud-msg').textContent='💡 Barcha qurilmalarda statistika uchun JSONBin.io ulaning (README ga qarang)';
+  }
+
   var h=document.getElementById('uhist');
   if(!res.length){h.innerHTML='<div style="text-align:center;padding:1rem;color:#bbb;font-size:13px">Hali test yechilmagan!</div>';return;}
   h.innerHTML=res.slice(0,5).map(function(r){
     var cl=r.pct>=70?'sg':r.pct>=50?'sy':'sr';
     var d=new Date(r.ts),ds=d.getDate()+'.'+(d.getMonth()+1)+'.'+d.getFullYear()+' '+d.getHours()+':'+String(d.getMinutes()).padStart(2,'0');
-    return'<div class="hi"><div><div class="hil">10 savol</div><div class="hid">'+ds+'</div></div><div class="his '+cl+'">'+r.pct+'%</div></div>';
+    var tag=r.hujjat&&r.hujjat!=='Barchasi'?(' <span style="font-size:10px;color:#aaa">· '+r.hujjat+'</span>'):'';
+    return'<div class="hi"><div><div class="hil">'+r.total+' savol'+tag+'</div><div class="hid">'+ds+'</div></div><div class="his '+cl+'">'+r.pct+'%</div></div>';
   }).join('');
 }
 
 function startQuiz(){
-  var pool=[].concat(Q).sort(function(){return Math.random()-.5;});qs=pool.slice(0,10);
+  selCount=parseInt(document.getElementById('f-count').value)||10;
+  var pool=getPool();
+  if(!pool.length){alert('Bu hujjat uchun savollar topilmadi!');return;}
+  pool=pool.slice().sort(function(){return Math.random()-.5;});
+  qs=pool.slice(0,Math.min(selCount,pool.length));
   cur=0;corr=0;wrn=0;ans=false;wqs=[];
   ['tab-home','tab-result'].forEach(function(id){document.getElementById(id).classList.remove('on');document.getElementById(id).style.display='none';});
   document.getElementById('tab-quiz').classList.add('on');document.getElementById('tab-quiz').style.display='block';
@@ -483,25 +527,21 @@ function answer(idx){
   document.getElementById('lc').textContent=corr;document.getElementById('lw').textContent=wrn;
   var ex=document.getElementById('expl');ex.innerHTML='💡 '+q.e;ex.style.display='block';
   var btn=document.getElementById('btnn');btn.style.display='inline-block';
-  btn.textContent=cur+1>=qs.length?'Natijani korish':'Keyingi';
+  btn.textContent=cur+1>=qs.length?'Natijani ko\'rish':'Keyingi →';
   if(TG) TG.HapticFeedback.impactOccurred(idx===q.c?'light':'heavy');
 }
 
 function nextQ(){cur++;renderQ();}
 
-function finishQ(){
+async function finishQ(){
   var pct=Math.round(corr/qs.length*100);
-  addD({pinfl:user.pinfl,name:user.name,tuman:user.tuman,lavozim:user.lavozim,pct:pct,corr:corr,wrn:wrn,total:qs.length,ts:Date.now()});
-  // Admin bo'lsa Telegram xabar yubormaslik
+  var entry={pinfl:user.pinfl,name:user.name,tuman:user.tuman,lavozim:user.lavozim,pct:pct,corr:corr,wrn:wrn,total:qs.length,hujjat:selHujjat,ts:Date.now()};
+  await cloudAdd(entry);
   if(!user.isAdmin){
     var gr=pct>=90?'🏆 Ajoyib':pct>=70?'👍 Yaxshi':pct>=50?'📚 Qoniqarli':'📖 Yaxshilash kerak';
-    sendTG('📊 <b>Test natijasi</b>\n\n'+
-      '👤 '+user.name+'\n'+
-      '📍 '+user.tuman+' · '+user.lavozim+'\n'+
-      '🎯 Ball: <b>'+pct+'%</b> ('+corr+'/'+qs.length+')\n'+
-      gr);
+    sendTG('📊 <b>Test natijasi</b>\n\n👤 '+user.name+'\n📍 '+user.tuman+' · '+user.lavozim+'\n📄 Hujjat: '+selHujjat+'\n🎯 Ball: <b>'+pct+'%</b> ('+corr+'/'+qs.length+')\n'+gr);
   }
-  document.getElementById('tab-quiz').classList.remove('on');document.getElementById('tab-quiz').style.display='none';
+  ['tab-quiz'].forEach(function(id){document.getElementById(id).classList.remove('on');document.getElementById(id).style.display='none';});
   document.getElementById('tab-result').classList.add('on');document.getElementById('tab-result').style.display='block';
   document.getElementById('rpct').textContent=pct+'%';
   document.getElementById('rc2').textContent=corr;document.getElementById('rw2').textContent=wrn;document.getElementById('rt2').textContent=qs.length;
@@ -513,87 +553,40 @@ function finishQ(){
   document.getElementById('rgrade').textContent=g;document.getElementById('rgs').textContent=s;
   var ww=document.getElementById('wrapw');
   if(wqs.length){
-    ww.innerHTML='<div class="wrc"><h3>❌ Xato qilingan savollar</h3>'+
-      wqs.map(function(w){return'<div class="wi"><div class="wih">'+w.h+'</div>'+w.q+'<div class="wic">✓ Togri: '+w.c+'</div></div>';}).join('')+'</div>';
-  }else ww.innerHTML='';
+    ww.innerHTML='<div class="wrc"><h3>❌ Xato qilingan savollar ('+wqs.length+' ta)</h3>'+
+      wqs.map(function(w){return'<div class="wi"><div class="wih">'+w.h+'</div>'+w.q+'<div class="wic">✓ To\'g\'ri: '+w.c+'</div></div>';}).join('')+'</div>';
+  }else ww.innerHTML='<div style="text-align:center;padding:1rem;font-size:14px;color:#059669">🎉 Barcha savollar to\'g\'ri!</div>';
   document.querySelectorAll('.ntab').forEach(function(n){n.classList[n.id==='nt-home'?'add':'remove']('on');});
   if(TG) TG.HapticFeedback.notificationOccurred(pct>=70?'success':'warning');
 }
 
 function goHome(){document.getElementById('tab-result').classList.remove('on');document.getElementById('tab-result').style.display='none';swTab('home');}
 
-function changeP(){}
-
-function loadAFull(){
+async function loadAFull(){
   document.getElementById('pcur').textContent=gP();
-  pollA();
-}
-
-function pollA(){
-  _all=gD().sort(function(a,b){return b.ts-a.ts;});
+  setCloudStatus(true,'☁️ Cloud ma\'lumotlari yuklanmoqda...','cloud-msg-admin','cloud-bar-admin');
+  _all = await cloudGet();
+  _all.sort(function(a,b){return b.ts-a.ts;});
   var tot=_all.length,uniq={};_all.forEach(function(r){uniq[r.pinfl]=1;});var uc=Object.keys(uniq).length;
   var avg=tot?Math.round(_all.reduce(function(s,r){return s+r.pct;},0)/tot):0;
   var top=tot?Math.max.apply(null,_all.map(function(r){return r.pct;})):0;
   document.getElementById('astats').innerHTML=
     '<div class="ac"><div class="acn">'+tot+'</div><div class="acl">Jami urinish</div></div>'+
     '<div class="ac"><div class="acn">'+uc+'</div><div class="acl">Xodimlar</div></div>'+
-    '<div class="ac"><div class="acn">'+avg+'%</div><div class="acl">Ortacha</div></div>'+
+    '<div class="ac"><div class="acn">'+avg+'%</div><div class="acl">O\'rtacha</div></div>'+
     '<div class="ac"><div class="acn">'+top+'%</div><div class="acl">Eng yuqori</div></div>';
   renderT();renderTum();
-}
-
-function renderReqs(reqs){
-  var el=document.getElementById('rlist'),t=document.getElementById('rsect');
-  if(!reqs||!reqs.length){t.textContent='⏳ Kirish so\'rovlari';el.innerHTML='<div class="noreq">Hozircha yangi so\'rov yoq ✓</div>';return;}
-  t.innerHTML='⏳ Kirish so\'rovlari <span class="nd"></span>';
-  var exk={};el.querySelectorAll('[data-k]').forEach(function(e){exk[e.dataset.k]=1;});
-  reqs.forEach(function(r){
-    if(!exk[r.key]){
-      var div=document.createElement('div');div.className='reqc';div.dataset.k=r.key;
-      var d=new Date(r.ts),ds=d.getHours()+':'+String(d.getMinutes()).padStart(2,'0');
-      div.innerHTML='<div class="reqn">'+r.name+'</div>'+
-        '<div class="reqm">PINFL: <b>'+r.pinfl+'</b><br>'+r.tuman+' · '+r.lavozim+'<br><span style="color:#aaa">'+ds+'</span></div>'+
-        '<div class="reqb">'+
-          '<button class="btndn" onclick="respR(\''+r.key+'\',\'denied\')">✗ Rad etish</button>'+
-          '<button class="btnal" onclick="respR(\''+r.key+'\',\'allowed\')">✓ Ruxsat</button>'+
-        '</div><div class="reqtr">Avtomatik rad: <b id="rt'+r.key+'">60</b> s</div>';
-      el.appendChild(div);
-      if(!admT[r.key]){
-        var sec=60;
-        admT[r.key]=setInterval(function(){
-          sec--;var te=document.getElementById('rt'+r.key);
-          if(te)te.textContent=sec;if(sec<=0)respR(r.key,'denied');
-        },1000);
-      }
-    }
-  });
-  el.querySelectorAll('[data-k]').forEach(function(div){if(!reqs.some(function(r){return r.key===div.dataset.k;}))div.remove();});
-}
-
-function respR(key,st){
-  clearInterval(admT[key]);delete admT[key];updR(key,st);
-  var req=gR().find(function(r){return r.key===key;});
-  if(req){
-    var msg=st==='allowed'?
-      '✅ <b>'+req.name+'</b> — kirishga ruxsat berildi':
-      '❌ <b>'+req.name+'</b> — kirish rad etildi';
-    sendTG(msg);
+  if(CLOUD_ENABLED){
+    setCloudStatus(true,'☁️ Cloud ma\'lumotlari yuklandi — barcha qurilmalar natijasi','cloud-msg-admin','cloud-bar-admin');
+  }else{
+    document.getElementById('cloud-bar-admin').className='cloud-status';
+    document.getElementById('cloud-msg-admin').textContent='📴 Faqat bu qurilma natijasi ko\'rsatilmoqda (Cloud o\'chirilgan)';
   }
-  var card=document.querySelector('[data-k="'+key+'"]');
-  if(card){
-    card.style.opacity='.5';card.style.pointerEvents='none';
-    var msg2=document.createElement('div');
-    msg2.style.cssText='text-align:center;font-size:13px;font-weight:600;margin-top:.5rem;color:'+(st==='allowed'?'#059669':'#dc2626');
-    msg2.textContent=st==='allowed'?'✓ Ruxsat berildi':'✗ Rad etildi';
-    card.appendChild(msg2);
-    setTimeout(function(){pollA();},1500);
-  }
-  if(TG) TG.HapticFeedback.impactOccurred('medium');
 }
 
 function renderT(){
   var tb=document.getElementById('mtb');
-  if(!_all.length){tb.innerHTML='<tr><td colspan="5" class="te">Malumot topilmadi</td></tr>';return;}
+  if(!_all.length){tb.innerHTML='<tr><td colspan="5" class="te">Ma\'lumot topilmadi</td></tr>';return;}
   tb.innerHTML=_all.map(function(r,i){
     var cl=r.pct>=70?'pg':r.pct>=50?'py':'pr';
     var d=new Date(r.ts),ds=d.getDate()+'.'+(d.getMonth()+1)+'.'+d.getFullYear();
@@ -609,7 +602,7 @@ function renderTum(){
   var map={};_all.forEach(function(r){var t=r.tuman||'?';if(!map[t])map[t]={p:{},u:0,sum:0};map[t].u++;map[t].sum+=r.pct;map[t].p[r.pinfl]=1;});
   var rows=Object.keys(map).map(function(t){return{t:t,v:map[t]};}).sort(function(a,b){return b.v.u-a.v.u;});
   var tb=document.getElementById('ttb');
-  if(!rows.length){tb.innerHTML='<tr><td colspan="4" class="te">Malumot yoq</td></tr>';return;}
+  if(!rows.length){tb.innerHTML='<tr><td colspan="4" class="te">Ma\'lumot yo\'q</td></tr>';return;}
   tb.innerHTML=rows.map(function(x){
     var avg=Math.round(x.v.sum/x.v.u),cl=avg>=70?'pg':avg>=50?'py':'pr';
     return'<tr><td><b>'+x.t+'</b></td><td>'+Object.keys(x.v.p).length+'</td><td>'+x.v.u+'</td><td><span class="pill '+cl+'">'+avg+'%</span></td></tr>';
@@ -617,10 +610,10 @@ function renderTum(){
 }
 
 function expCSV(){
-  var csv="T/r,F.I.Sh,PINFL,Tuman,Lavozim,Ball,Togri,Notogri,Sana\n";
+  var csv="T/r,F.I.Sh,PINFL,Tuman,Lavozim,Hujjat,Ball,To'g'ri,Noto'g'ri,Sana\n";
   _all.forEach(function(r,i){
     var d=new Date(r.ts),ds=d.getDate()+'.'+(d.getMonth()+1)+'.'+d.getFullYear();
-    csv+=(i+1)+',"'+r.name+'","'+r.pinfl+'","'+(r.tuman||'')+'","'+(r.lavozim||'')+'",'+r.pct+','+r.corr+','+r.wrn+',"'+ds+'"\n';
+    csv+=(i+1)+',"'+r.name+'","'+r.pinfl+'","'+(r.tuman||'')+'","'+(r.lavozim||'')+'","'+(r.hujjat||'')+'",'+r.pct+','+r.corr+','+r.wrn+',"'+ds+'"\n';
   });
   var a=document.createElement('a');a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);
   a.download='kadastr_'+new Date().toISOString().slice(0,10)+'.csv';a.click();
@@ -628,28 +621,111 @@ function expCSV(){
 
 function show(id){document.querySelectorAll('.scr').forEach(function(s){s.classList.remove('on');});document.getElementById(id).classList.add('on');}
 
-// ========== SAVOLLAR ==========
+// ========== SAVOLLAR BAZASI (80+ savol) ==========
 const Q=[
+  // ===== URQ-803 (25 ta savol) =====
   {h:'URQ-803',q:"URQ-803 qonuniga ko'ra ko'chmas mulkka bo'lgan huquqlarni davlat ro'yxatidan o'tkazishni qaysi organ amalga oshiradi?",o:["Adliya vazirligi","Iqtisodiyot va moliya vazirligi huzuridagi Kadastr agentligining DKP","Soliq qo'mitasi","Mahalliy hokimiyat"],c:1,e:"Ko'chmas mulkka bo'lgan huquqlarni davlat ro'yxatidan o'tkazishni <b>Iqtisodiyot va moliya vazirligi huzuridagi Kadastr agentligining Davlat kadastrlari palatasi</b> amalga oshiradi."},
   {h:'URQ-803',q:"URQ-803 qonuni qachon kuchga kirgan?",o:["28.11.2022","01.01.2023","01.03.2023","15.12.2022"],c:2,e:"Qonun 28.11.2022-yilda qabul qilingan, <b>01.03.2023</b>-yilda kuchga kirgan."},
-  {h:'URQ-803',q:"URQ-803 bo'yicha ro'yxatdan o'tkazishning asosiy prinsiplaridan biri?",o:["Yashirinlik","Davlat ro'yxatidan o'tkazilgan huquqlarning ustuvorligi","Ko'ngillilik","Bir martalik ro'yxat"],c:1,e:"<b>Davlat ro'yxatidan o'tkazilgan ko'chmas mulkka bo'lgan huquqlarning ustuvorligi</b> URQ-803 asosiy prinsiplaridan biridir."},
-  {h:'URQ-803',q:"URQ-803 bo'yicha ko'chmas mulkka bo'lgan huquqlar to'g'risidagi axborot qanday?",o:["Maxfiy","Ochiq","Faqat egasiga ma'lum","Idoraviy"],c:1,e:"URQ-803 prinsiplaridan biri — ko'chmas mulkka bo'lgan huquqlar to'g'risidagi <b>axborotning ochiqligi</b>."},
-  {h:'URQ-803',q:"URQ-803 bo'yicha ko'chmas mulkka bo'lgan huquqlarni ro'yxatdan o'tkazish qanday?",o:["Ko'ngilli","Majburiy","Ixtiyoriy","Faqat suddan keyin"],c:1,e:"URQ-803 prinsiplaridan biri — ko'chmas mulkka bo'lgan huquqlarni davlat ro'yxatidan o'tkazishning <b>majburiyligi</b>."},
-  {h:'URQ-803',q:"URQ-803 bo'yicha qonunchilikni buzganlik uchun javobgarlik qaysi moddada?",o:["15-modda","45-modda","71-modda","73-modda"],c:2,e:"<b>71-modda</b> ko'chmas mulkka bo'lgan huquqlarni davlat ro'yxatidan o'tkazish to'g'risidagi qonunchilikni buzganlik uchun javobgarlikka bag'ishlangan."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha ro'yxatdan o'tkazishning asosiy prinsiplaridan biri — davlat ro'yxatidan o'tkazilgan huquqlarning nima?",o:["Yashirinligi","Ustuvorligi","Ko'ngillilik","Bir martaligi"],c:1,e:"<b>Davlat ro'yxatidan o'tkazilgan ko'chmas mulkka bo'lgan huquqlarning ustuvorligi</b> URQ-803 asosiy prinsiplaridan biridir."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha ko'chmas mulkka bo'lgan huquqlar to'g'risidagi axborot qanday xususiyatga ega?",o:["Maxfiy","Ochiq","Faqat egasiga ma'lum","Idoraviy"],c:1,e:"URQ-803 prinsiplaridan biri — ko'chmas mulkka bo'lgan huquqlar to'g'risidagi <b>axborotning ochiqligi</b>."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha ko'chmas mulkka bo'lgan huquqlarni ro'yxatdan o'tkazish qanday xarakterga ega?",o:["Ko'ngilli","Majburiy","Ixtiyoriy","Faqat suddan keyin"],c:1,e:"URQ-803 prinsiplaridan biri — ko'chmas mulkka bo'lgan huquqlarni davlat ro'yxatidan o'tkazishning <b>majburiyligi</b>."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha qonunchilikni buzganlik uchun javobgarlik qaysi moddada ko'rsatilgan?",o:["15-modda","45-modda","71-modda","73-modda"],c:2,e:"<b>71-modda</b> ko'chmas mulkka bo'lgan huquqlarni davlat ro'yxatidan o'tkazish to'g'risidagi qonunchilikni buzganlik uchun javobgarlikka bag'ishlangan."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha ko'chmas mulk ob'ektlari ro'yxatiga kimlar kiradi?",o:["Faqat yer uchastkalar","Binolar, inshootlar va yer uchastkalari","Faqat turar-joy binolari","Sanoat korxonalari"],c:1,e:"URQ-803 bo'yicha ko'chmas mulk ob'ektlari: <b>yer uchastkalari, binolar va inshootlar</b> hamda ulardagi huquqlar."},
+  {h:'URQ-803',q:"URQ-803 qonuniga ko'ra davlat ro'yxatidan o'tkazish uchun hujjatlar qayerga topshiriladi?",o:["Faqat palataga","Palataga yoki MFC orqali","Faqat MFCga","Hokimiyatga"],c:1,e:"Hujjatlar <b>DKP ga bevosita yoki MFC orqali</b> topshirilishi mumkin."},
+  {h:'URQ-803',q:"URQ-803 ga ko'ra meros bo'yicha ko'chmas mulkka huquq qachon ro'yxatdan o'tkaziladi?",o:["Meros ochilganda","Meros guvohnomasini olgandan so'ng","Sud qarori bilan","Bir yil o'tgach"],c:1,e:"Meros bo'yicha huquq <b>meros guvohnomasini olgandan so'ng</b> ro'yxatdan o'tkaziladi."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha ipoteka (garov) ro'yxatdan o'tkazilsa, qaysi hujjat beriladi?",o:["Kadastr pasporti","Ipoteka guvohnomasi","Mulkchilik guvohnomasi","Ro'yxatdan o'tkazish dalolatnomasi"],c:3,e:"Ipoteka (garov) ro'yxatdan o'tkazilganda <b>ro'yxatdan o'tkazish dalolatnomasi</b> beriladi."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha ko'chmas mulkka huquqni ro'yxatdan o'tkazishda sud qarorining ahamiyati?",o:["Ixtiyoriy","Majburiy asos bo'la oladi","Faqat sudda tasdiqlanadi","Hech qanday"],c:1,e:"<b>Sud qarori</b> ko'chmas mulkka huquqni ro'yxatdan o'tkazish uchun majburiy asos bo'la oladi."},
+  {h:'URQ-803',q:"URQ-803 ga ko'ra ko'chmas mulk huquqlarini ro'yxatdan o'tkazishda nechta nusxa hujjat topshiriladi?",o:["1 nusxa","2 nusxa","3 nusxa","4 nusxa"],c:1,e:"Hujjatlar odatda <b>2 nusxada</b> topshiriladi — biri arxivga, biri egasiga qaytariladi."},
+  {h:'URQ-803',q:"URQ-803 asosida UZKAD tizimi nimani anglatadi?",o:["Yer uchun avtomatlashtirilgan kadastr tizimi","Ko'chmas mulk ob'ektlarini davlat kadastrining axborot tizimi","Soliq ma'lumotlar bazasi","Manzillar reyestri"],c:1,e:"<b>UZKAD</b> — ko'chmas mulk ob'ektlarini davlat kadastrini yuritish uchun avtomatlashtirilgan axborot tizimi."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha ko'chmas mulkni ro'yxatdan o'tkazishda kadastr muhandisining roli?",o:["Ro'yxatdan o'tkazuvchi","Texnik hujjat tayyorlovchi","Nazorat organi","Mulk egasi vakili"],c:1,e:"<b>Kadastr muhandisi</b> ko'chmas mulk uchun texnik reja va kadastr hujjatlarini tayyorlaydi."},
+  {h:'URQ-803',q:"URQ-803 qonuniga ko'ra 'Ro'yxatdan o'tkazish' nima?",o:["Ko'chmas mulkni sotish","Davlat tomonidan huquqni rasmiy tan olish va hujjatlashtirish","Kadastr raqam berish","Baholash"],c:1,e:"Ro'yxatdan o'tkazish — <b>davlat tomonidan ko'chmas mulkka bo'lgan huquqni rasmiy tan olish va hujjatlashtirish</b>."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha ko'chmas mulkni ro'yxatdan o'tkazishdan bosh tortish qanday holda qonuniy?",o:["Har qanday holda","Faqat hujjatlar to'liq bo'lmasa","Faqat sud bo'lsa","Hech qachon"],c:1,e:"Ro'yxatdan o'tkazishdan bosh tortish <b>faqat qonunda belgilangan asoslar bo'lganda</b>, jumladan hujjatlar to'liq bo'lmaganda qonuniy."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha kadastr raqami nimani anglatadi?",o:["Mulk narxini","Ko'chmas mulk ob'ektiga berilgan noyob identifikator raqam","Yer uchastka maydonini","Manzilni"],c:1,e:"<b>Kadastr raqami</b> — har bir ko'chmas mulk ob'ektiga berilgan noyob identifikator raqam."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha mulkchilik huquqi qachon yuzaga keladi?",o:["Shartnoma imzolanganda","Ro'yxatdan o'tkazilgandan keyin","To'lov amalga oshirilgandan keyin","Notarius tasdiqlaganda"],c:1,e:"<b>Mulkchilik huquqi ro'yxatdan o'tkazilgandan keyin</b> rasman yuzaga keladi."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha arxiv hujjatlari qancha muddat saqlanadi?",o:["5 yil","10 yil","25 yil","Muddatsiz"],c:3,e:"Ko'chmas mulk huquqlariga oid arxiv hujjatlari <b>muddatsiz</b> saqlanadi."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha xato ro'yxatdan o'tkazishni tuzatish qanday amalga oshiriladi?",o:["Yangi ariza bilan","Texnik xatoni tuzatish tartibida yoki sud orqali","Faqat sudda","O'z-o'zidan"],c:1,e:"Xato ro'yxatdan o'tkazish <b>texnik xatoni tuzatish tartibida yoki sud orqali</b> tuzatiladi."},
+  {h:'URQ-803',q:"URQ-803 ga ko'ra bitta ko'chmas mulk ob'ektiga bir vaqtda nechta mulkdor bo'lishi mumkin?",o:["Faqat bitta","Ko'p — umumiy mulk shaklida","Ikki tadan ko'p emas","Faqat oila a'zolari"],c:1,e:"<b>Umumiy mulk shaklida</b> bitta ko'chmas mulk ob'ektiga bir vaqtda ko'p mulkdor bo'lishi mumkin."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha ijaraga berilgan ko'chmas mulk ro'yxatdan o'tkazilishi shartmi?",o:["Yo'q, ixtiyoriy","Ha, agar ijara muddati 1 yildan ortiq bo'lsa","Faqat davlat mulki uchun","Faqat tijorat mulki uchun"],c:1,e:"<b>1 yildan ortiq muddatga</b> tuzilgan ijara shartnomalari majburiy ro'yxatdan o'tkazilishi kerak."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha ro'yxatdan o'tkazish muddati qancha?",o:["3 ish kuni","5 ish kuni","7 ish kuni","10 ish kuni"],c:1,e:"Standart holda ro'yxatdan o'tkazish muddati <b>5 ish kuni</b>."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha ko'chmas mulkni o'tkazib berish (sotish) uchun zaruriy shart nima?",o:["Xaridor rozi bo'lsa","Notarius tasdiqlash","Mulk huquqi avval ro'yxatdan o'tkazilgan bo'lishi","Soliq to'langan bo'lishi"],c:2,e:"Mulkni o'tkazib berish uchun <b>mulk huquqi avval ro'yxatdan o'tkazilgan bo'lishi</b> shart."},
+  {h:'URQ-803',q:"URQ-803 bo'yicha davlat reyestri ma'lumotlari kim uchun ochiq?",o:["Faqat egasi uchun","Faqat davlat organlari uchun","Barcha fuqarolar va tashkilotlar uchun","Faqat sudlar uchun"],c:2,e:"Davlat reyestri ma'lumotlari <b>barcha fuqarolar va tashkilotlar uchun ochiq</b> — axborotning ochiqligi printsipi asosida."},
+
+  // ===== URQ-937 (15 ta savol) =====
   {h:'URQ-937',q:"URQ-937-son Qonun (05.08.2024) nima haqida?",o:["Ko'chmas mulkni ijaraga berish","O'zboshimchalik bilan egallab olingan yer uchastkalariga bo'lgan huquqlarni e'tirof etish","Kadastr raqamlari","Yer solig'i"],c:1,e:"<b>URQ-937</b> — o'zboshimchalik bilan egallab olingan yer uchastkalariga hamda ularda qurilgan bino va inshootlarga bo'lgan huquqlarni e'tirof etish to'g'risidagi qonun (2024)."},
   {h:'URQ-937',q:"URQ-937 11-moddasiga ko'ra ijara huquqini e'tirof etish kimga tatbiq etiladi?",o:["Xorijiy investorlarga","Dehqon xo'jaliklariga","Fuqarolar, YaTT va rezident yuridik shaxslarga","Davlat korxonalariga"],c:2,e:"<b>11-modda:</b> Fuqarolar, YaTT va rezident yuridik shaxslar uchun ijara huquqi e'tirof etiladi."},
+  {h:'URQ-937',q:"URQ-937 bo'yicha 'o'zboshimchalik bilan egallab olingan' yer deganda nima tushuniladi?",o:["Ruxsatsiz foydalanilgan yer","Ijaraga berilgan yer","Davlatga qaytarilgan yer","Tortib olingan yer"],c:0,e:"<b>O'zboshimchalik bilan egallab olingan yer</b> — tegishli ruxsat yoki hujjatsiz foydalanib kelingan yer uchastka."},
+  {h:'URQ-937',q:"URQ-937 qachon qabul qilingan?",o:["01.01.2024","05.08.2024","15.06.2024","28.11.2023"],c:1,e:"URQ-937 <b>05.08.2024</b>-yilda qabul qilingan."},
+  {h:'URQ-937',q:"URQ-937 bo'yicha huquqni e'tirof etish uchun asosiy shart nima?",o:["Sud qarori","Hujjatsiz foydalanilganini isbotlash","Belgilangan muddatgacha ariza berish va talablar bajarish","To'lov qilish"],c:2,e:"<b>Belgilangan muddatgacha ariza berish va qonunda ko'rsatilgan talablarni bajarish</b> asosiy shart."},
+  {h:'URQ-937',q:"URQ-937 bo'yicha e'tirof etilgan huquq qaysi organda ro'yxatdan o'tkaziladi?",o:["Adliya vazirligi","Hokimiyat","DKP (Kadastr palatasi)","Soliq organi"],c:2,e:"E'tirof etilgan huquq <b>DKP — Davlat kadastrlari palatasi</b>da ro'yxatdan o'tkaziladi."},
+  {h:'URQ-937',q:"URQ-937 bo'yicha qanday binolarga huquq e'tirof etilishi mumkin?",o:["Faqat turar-joy binolariga","O'zboshimchalik bilan egallab olingan yer uchastkasida qurilgan bino va inshootlarga","Faqat tijorat binolariga","Davlat binolariga"],c:1,e:"<b>O'zboshimchalik bilan egallab olingan yer uchastkasida qurilgan bino va inshootlarga</b> ham huquq e'tirof etilishi mumkin."},
+  {h:'URQ-937',q:"URQ-937 ga ko'ra e'tirof etish jarayonini qaysi organ nazorat qiladi?",o:["Prokuratura","Hokimiyat huzuridagi komissiya","Soliq organi","Adliya vazirligi"],c:1,e:"E'tirof etish jarayonini <b>hokimiyat huzuridagi maxsus komissiya</b> nazorat qiladi."},
+  {h:'URQ-937',q:"URQ-937 bo'yicha ariza berish muddati o'tib ketsa nima bo'ladi?",o:["Ariza qabul qilinmaydi","Jarima to'lanadi","Yer tortib olinadi","Qonun amal qilmaydi"],c:0,e:"Belgilangan muddatdan keyin <b>ariza qabul qilinmaydi</b> — qonun muddatidan o'tgan holatlarga tatbiq etilmaydi."},
+  {h:'URQ-937',q:"URQ-937 bo'yicha yer uchastka maydoni belgilanganidan ortiq bo'lsa?",o:["Ortiqcha qismi bepul beriladi","Ortiqcha qism uchun bozor narxida to'lov amalga oshiriladi","Ortiqcha qism tortib olinadi","Hech narsa bo'lmaydi"],c:1,e:"<b>Belgilangan me'yordan ortiq</b> qism uchun bozor narxida to'lov amalga oshiriladi."},
+  {h:'URQ-937',q:"URQ-937 bo'yicha xorijiy fuqarolar ushbu qonundan foydalana oladimi?",o:["Ha, to'liq","Ha, cheklangan holda","Yo'q","Faqat doimiy yashaydiganlar"],c:2,e:"<b>Xorijiy fuqarolar</b> URQ-937 dan foydalana olmaydi — qonun faqat O'zbekiston fuqarolari, YaTT va rezident yuridik shaxslarga tatbiq etiladi."},
+  {h:'URQ-937',q:"URQ-937 bo'yicha dehqon xo'jaligiga yer e'tirof etilishining xususiyati?",o:["Ular uchun alohida tartib","Ular uchun qonun tatbiq etilmaydi","Ular ham 11-modda asosida ijara huquqi oladi","Bepul beriladi"],c:2,e:"URQ-937 <b>11-modda</b>si dehqon xo'jaliklariga ham ijara huquqini e'tirof etishni nazarda tutadi."},
+  {h:'URQ-937',q:"URQ-937 bo'yicha garov (ipoteka) ostidagi yerga nisbatan qonun amal qiladimi?",o:["Ha, to'liq","Yo'q, garov bo'lsa qonun amal qilmaydi","Faqat sudda","Qisman"],c:1,e:"<b>Garov (ipoteka) ostidagi yer uchastka</b>ga nisbatan URQ-937 amal qilmaydi."},
+  {h:'URQ-937',q:"URQ-937 bo'yicha yer e'tirofiga ariza qaerga topshiriladi?",o:["DKP ga","Tumandagi komissiyaga","Hokimiyatga","MFCga"],c:1,e:"Ariza <b>tuman/shahar hokimligi huzuridagi komissiyaga</b> topshiriladi."},
+  {h:'URQ-937',q:"URQ-937 maqsadi nima?",o:["Yer solig'ini oshirish","Ko'p yillik hujjatsiz foydalanuvchilar huquqlarini legallashtirib, reyestrga kiritish","Yangi yerlar ajratish","Xorijiy investitsiya jalb qilish"],c:1,e:"<b>Ko'p yillar mobaynida hujjatsiz foydalanib kelgan fuqarolar va tashkilotlar huquqlarini legallashtirib, davlat reyestriga kiritish</b> — URQ-937 asosiy maqsadi."},
+
+  // ===== VMQ 389-son (10 ta savol) =====
   {h:'VMQ 389-son',q:"VMQ 389-son qaysi Prezident Farmoni ijrosini ta'minlash maqsadida qabul qilingan?",o:["PF-5930","PF-6061","PF-6199","PF-5969"],c:1,e:"VMQ 389-son <b>PF-6061-son Farmon</b> ijrosi uchun qabul qilingan."},
   {h:'VMQ 389-son',q:"VMQ 389-son kuchga kirishi bilan qaysi eski qaror bekor qilindi?",o:["1997-yil 278-son VMQ qarori","2014-yil 186-son VMQ qarori","2020-yil 535-son VMQ qarori","1999-yil 422-son VMQ qarori"],c:0,e:"VMQ 389-son kuchga kirishi bilan <b>1997-yil 2-iyundagi 278-son</b> VMQ qarori bekor qilindi."},
+  {h:'VMQ 389-son',q:"VMQ 389-son asosan qaysi soha faoliyatini tartibga soladi?",o:["Yer reyestri","Ko'chmas mulk ob'ektlarining davlat kadastri","Soliq hisob-kitobi","Manzillar reyestri"],c:1,e:"VMQ 389-son <b>ko'chmas mulk ob'ektlarining davlat kadastri</b> sohasidagi faoliyatni tartibga soladi."},
+  {h:'VMQ 389-son',q:"VMQ 389-son bo'yicha kadastr agentligi qaysi vazirlik huzurida?",o:["Adliya vazirligi","Iqtisodiyot va moliya vazirligi","Qurilish vazirligi","Moliya vazirligi"],c:1,e:"Kadastr agentligi <b>Iqtisodiyot va moliya vazirligi huzurida</b> faoliyat yuritadi."},
+  {h:'VMQ 389-son',q:"VMQ 389-son bo'yicha davlat kadastri nima?",o:["Ko'chmas mulk ob'ektlari to'g'risidagi ma'lumotlarning davlat tizimi","Yer solig'i tizimi","Bino qurilish ruxsatlari","Mulk baholash tizimi"],c:0,e:"Davlat kadastri — <b>ko'chmas mulk ob'ektlari to'g'risidagi ma'lumotlarni to'plash, saqlash va foydalanish tizimi</b>."},
+  {h:'VMQ 389-son',q:"VMQ 389-son ilovalari necha ta?",o:["1 ta","2 ta","3 ta","4 ta"],c:1,e:"VMQ 389-son <b>2 ta ilova</b>dan iborat."},
+  {h:'VMQ 389-son',q:"VMQ 389-son bo'yicha DKP (Davlat kadastrlari palatasi) viloyat va tumanlarda qanday nomlanadi?",o:["Bosh boshqarma","Viloyat/tuman filiallari","Kadastr markazi","Reyestr bo'limi"],c:1,e:"DKP <b>viloyat va tumanlarda filiallar</b> orqali faoliyat yuritadi."},
+  {h:'VMQ 389-son',q:"VMQ 389-son bo'yicha kadastr agentligining asosiy vazifalari?",o:["Faqat yer soliqlarini yig'ish","Ko'chmas mulk ob'ektlari kadastrini yuritish va huquqlarni ro'yxatdan o'tkazish","Binolarni qurish","Yerlarni sotish"],c:1,e:"<b>Ko'chmas mulk ob'ektlari kadastrini yuritish va huquqlarni davlat ro'yxatidan o'tkazish</b> — agentlikning asosiy vazifalari."},
+  {h:'VMQ 389-son',q:"VMQ 389-son bo'yicha kadastr ma'lumotlarini kim taqdim etishi mumkin?",o:["Faqat mulk egasi","Har qanday manfaatdor shaxs","Faqat davlat organlari","Faqat notariuslar"],c:1,e:"Kadastr ma'lumotlarini <b>har qanday manfaatdor shaxs</b> so'rashi mumkin (axborotning ochiqligi printsipi)."},
+  {h:'VMQ 389-son',q:"VMQ 389-son asosida kadastr palatasi xizmatlari qanday taqdim etiladi?",o:["Faqat shaxsan borib","Elektron va shaxsan","Faqat pochta orqali","Faqat vakil orqali"],c:1,e:"Xizmatlar <b>elektron (my.gov.uz) va shaxsan</b> taqdim etiladi."},
+
+  // ===== VMQ 186-son (10 ta savol) =====
   {h:'VMQ 186-son',q:"VMQ 186-son (10.07.2014) asosan nimani tartibga soladi?",o:["Kadastr organlari tuzilmasi","Ko'chmas mulk ob'ektlari davlat kadastri sohasida xizmatlar narxlarini belgilash tartibi","Yer uchastkalarini berish","Ko'chmas mulkni garov"],c:1,e:"VMQ 186-son <b>ko'chmas mulk ob'ektlarining davlat kadastri sohasida davlat xizmatlari narxlarini belgilash tartibini</b> o'rnatadi."},
   {h:'VMQ 186-son',q:"VMQ 186-son 2-bandiga ko'ra kadastr xizmatlari qiymatidan necha foizi jamg'armaga o'tkaziladi?",o:["5%","10%","15%","20%"],c:1,e:"Ko'chmas mulk ob'ektlariga kadastr ishini tayyorlash va huquqlarni ro'yxatdan o'tkazish xizmatlari qiymatidan <b>10 foizi</b> Kadastr agentligining budjetdan tashqari jamg'armasiga o'tkaziladi."},
+  {h:'VMQ 186-son',q:"VMQ 186-son bo'yicha narxlar kim tomonidan belgilanadi?",o:["Parlament","Vazirlar Mahkamasi","Kadastr agentligi","Moliya vazirligi"],c:1,e:"Narxlar <b>Vazirlar Mahkamasi</b> tomonidan belgilanadi."},
+  {h:'VMQ 186-son',q:"VMQ 186-son bo'yicha xizmatlar uchun to'lov qaysi valyutada amalga oshiriladi?",o:["Dollar","Faqat naqd so'm","O'zbek so'mi (naqd va naqdsiz)","Faqat bank o'tkazmasi"],c:2,e:"To'lov <b>o'zbek so'mida</b>, naqd va naqdsiz shaklda amalga oshiriladi."},
+  {h:'VMQ 186-son',q:"VMQ 186-son bo'yicha imtiyozli toifalar (keksalar, nogironlar) uchun to'lov qanday?",o:["To'liq to'laydi","50% chegirma","To'lovdan ozod","Kechiktirib to'laydi"],c:2,e:"Belgilangan imtiyozli toifalar (nogironlar, faxriylar va boshqalar) <b>to'lovdan ozod qilinadi yoki chegirma beriladi</b>."},
+  {h:'VMQ 186-son',q:"VMQ 186-son bo'yicha xizmat narxlari qachon qayta ko'rib chiqilishi mumkin?",o:["Har yili","Zarurat tug'ilganda VMQ qarori bilan","Har 5 yilda","Hech qachon"],c:1,e:"Narxlar <b>zarurat tug'ilganda VMQ qarori</b> bilan qayta ko'rib chiqilishi mumkin."},
+  {h:'VMQ 186-son',q:"VMQ 186-son 1-ilovasiga ko'ra narxlar jadvalida nima ko'rsatiladi?",o:["Faqat ro'yxatdan o'tkazish narxi","Har bir xizmat turi uchun alohida narx","Umumiy xizmat narxi","Faqat kadastr pasporti narxi"],c:1,e:"<b>Har bir xizmat turi uchun alohida narx</b> 1-ilovada jadval shaklida keltirilgan."},
+  {h:'VMQ 186-son',q:"VMQ 186-son bo'yicha kadastr xizmatlari uchun to'lov qachon amalga oshiriladi?",o:["Xizmat ko'rsatilgandan keyin","Ariza topshirishdan oldin yoki ko'rsatish vaqtida","Faqat xizmat tugaganidan keyin","To'lov shart emas"],c:1,e:"To'lov <b>ariza topshirishdan oldin yoki xizmat ko'rsatish vaqtida</b> amalga oshiriladi."},
+  {h:'VMQ 186-son',q:"VMQ 186-son bo'yicha 10% jamg'arma mablag'i nima uchun ishlatiladi?",o:["Xodimlarga mukofot","Tizim rivojlantirish va moddiy-texnik ta'minot","Soliq to'lash","Qurilish ishlari"],c:1,e:"Jamg'arma mablag'i <b>kadastr tizimini rivojlantirish va moddiy-texnik ta'minot</b> uchun ishlatiladi."},
+  {h:'VMQ 186-son',q:"VMQ 186-son va URQ-803 o'rtasidagi bog'liqlik?",o:["Ular bir-birini bekor qiladi","VMQ 186-son URQ-803 doirasida xizmatlar narxini belgilaydi","Ular bir xil hujjat","Bog'liq emas"],c:1,e:"<b>VMQ 186-son URQ-803 qonuni doirasida kadastr xizmatlari narxlarini belgilaydi</b> — bir-birini to'ldiradi."},
+
+  // ===== VMQ 535-son (10 ta savol) =====
   {h:'VMQ 535-son',q:"VMQ 535-son 2-ilovasi reglamentida 'ro'yxatdan o'tkazuvchi organ' kim?",o:["Adliya vazirligi","Iqtisodiyot va moliya vazirligi huzuridagi Kadastr agentligining DKP","Soliq qo'mitasi","Hokimiyat"],c:1,e:"<b>Ro'yxatdan o'tkazuvchi organ</b> — Iqtisodiyot va moliya vazirligi huzuridagi Kadastr agentligining Davlat kadastrlari palatasi."},
   {h:'VMQ 535-son',q:"VMQ 535-son bo'yicha kadastr pasporti uchun to'lov qaysi hujjat asosida belgilanadi?",o:["VMQ 389-son","VMQ 186-son (10.07.2014)","URQ-803","Soliq kodeksi"],c:1,e:"Kadastr pasportini berish uchun undiriladigan to'lov miqdori <b>VMQ 186-son (2014-yil 10-iyuldagi)</b> asosida belgilanadi."},
+  {h:'VMQ 535-son',q:"VMQ 535-son qachon qabul qilingan?",o:["2014-yil","2018-yil","2020-yil","2022-yil"],c:2,e:"VMQ 535-son <b>2020-yilda</b> qabul qilingan."},
+  {h:'VMQ 535-son',q:"VMQ 535-son 1-ilovasida nima ko'rsatilgan?",o:["Kadastr pasporti shakli","Xizmat ko'rsatish reglamenti","Ko'chmas mulk davlat kadastrini yuritish tartibi","Narxlar jadvali"],c:2,e:"VMQ 535-son 1-ilovasida <b>ko'chmas mulk ob'ektlarining davlat kadastrini yuritish tartibi</b> ko'rsatilgan."},
+  {h:'VMQ 535-son',q:"VMQ 535-son bo'yicha kadastr pasporti necha kunda beriladi?",o:["1 ish kuni","3 ish kuni","5 ish kuni","10 ish kuni"],c:1,e:"Kadastr pasporti <b>3 ish kuni</b> ichida beriladi."},
+  {h:'VMQ 535-son',q:"VMQ 535-son bo'yicha 'ko'chmas mulk ob'ektini ro'yxatga olish' deganda nima tushuniladi?",o:["Mulkni sotish","Ob'ektni kadastr raqam bilan davlat reyestriga kiritish","Mulkni baholash","Mulkni ijaraga berish"],c:1,e:"<b>Ob'ektni kadastr raqam bilan davlat reyestriga kiritish</b> — ko'chmas mulk ob'ektini ro'yxatga olish."},
+  {h:'VMQ 535-son',q:"VMQ 535-son bo'yicha kadastr pasportida qanday ma'lumotlar bo'ladi?",o:["Faqat manzil","Ob'ekt turi, maydoni, kadastr raqami, joylashuvi","Faqat egasi ismi","Narxi"],c:1,e:"Kadastr pasportida <b>ob'ekt turi, maydoni, kadastr raqami, joylashuvi va boshqa texnik ma'lumotlar</b> bo'ladi."},
+  {h:'VMQ 535-son',q:"VMQ 535-son bo'yicha kadastr ma'lumotlarini o'zgartirish uchun nima talab qilinadi?",o:["Faqat ariza","Tegishli hujjatlar asosida ariza","Sud qarori","Hokimiyat qarori"],c:1,e:"<b>Tegishli hujjatlar asosida ariza</b> taqdim etilishi kerak."},
+  {h:'VMQ 535-son',q:"VMQ 535-son bo'yicha kadastr raqami qanday tuzilishga ega?",o:["Tasodifiy raqam","Viloyat-tuman-massiv-ob'ekt ketma-ketligida","Faqat tartib raqami","Manzilga asoslangan"],c:1,e:"Kadastr raqami <b>viloyat-tuman-massiv-ob'ekt ketma-ketligida</b> tuziladi — ierarxik tuzilish."},
+  {h:'VMQ 535-son',q:"VMQ 535-son bo'yicha kadastr pasporti qachon qayta rasmiylashtiriladi?",o:["Har 5 yilda","Ob'ektda o'zgarish bo'lganda","Har yili","Hech qachon"],c:1,e:"Kadastr pasporti <b>ob'ektda o'zgarish bo'lganda</b> (qayta qurilish, bo'linish, birlashtirish va h.k.) qayta rasmiylashtiriladi."},
+
+  // ===== Yer kodeksi (10 ta savol) =====
   {h:'Yer kodeksi',q:"O'zbekiston Respublikasining Yer kodeksi qachon qabul qilingan?",o:["15.04.1999","30.04.1998","01.01.2000","28.11.2022"],c:1,e:"O'zbekiston Respublikasining Yer kodeksi <b>30.04.1998</b> yilda qabul qilingan."},
   {h:'Yer kodeksi',q:"Yer kodeksiga ko'ra yer uchastkasiga bo'lgan huquqlar qachon yuzaga keladi?",o:["Shartnoma imzolanganda","Kadastr ro'yxatiga kiritilganda","Hokimiyat qarorida","To'lov amalga oshirilganda"],c:1,e:"<b>Yer kodeksi:</b> yer uchastkasiga bo'lgan huquqlar <b>kadastr ro'yxatiga kiritilgan paytdan</b> boshlab yuzaga keladi."},
   {h:'Yer kodeksi',q:"Yer uchastkasining maqsadli tayinlanishini o'zgartirish kimning vakolatida?",o:["Yer egasi xohishi","Vakolatli organlar belgilangan tartibda","Kadastr palatasi","Soliq organlari"],c:1,e:"<b>Yer kodeksi:</b> maqsadli tayinlanishni o'zgartirish faqat <b>vakolatli organlar</b> tomonidan belgilangan tartibda amalga oshiriladi."},
   {h:'Yer kodeksi',q:"Yer kodeksiga ko'ra ro'yxatdan o'tmagan yer uchastkasiga bo'lgan huquqlar?",o:["Tan olinadi","Tan olinmaydi","Shartli tan olinadi","Sud qaroriga ko'ra"],c:1,e:"<b>Yer kodeksi:</b> ro'yxatdan o'tmagan yer uchastkasiga nisbatan huquqlar <b>tan olinmaydi</b>."},
-  {h:'Umumiy',q:"Qaysi hujjat ko'chmas mulkka bo'lgan huquqlarni ro'yxatdan o'tkazishning asosiy prinsiplarini belgilaydi?",o:["VMQ 389-son","VMQ 535-son","URQ-803-son","VMQ 186-son"],c:2,e:"Ko'chmas mulkka bo'lgan huquqlarni davlat ro'yxatidan o'tkazishning asosiy prinsiplari <b>URQ-803-son qonunida</b> belgilangan."},
-  {h:'Umumiy',q:"VMQ 535-son va VMQ 186-son o'rtasidagi bog'liqlik?",o:["Ular bir-birini bekor qiladi","VMQ 535-son bo'yicha kadastr pasporti to'lovi VMQ 186-son asosida belgilanadi","Ular bir xil hujjat","Har xil sohalarga"],c:1,e:"VMQ 535-son 2-ilova reglamentiga ko'ra kadastr pasportini berish uchun undiriladigan <b>to'lov miqdori VMQ 186-son asosida belgilanadi</b>."}
+  {h:'Yer kodeksi',q:"Yer kodeksiga ko'ra O'zbekistonda yer kimning mulki?",o:["Fuqarolarning","Davlatning","Mahalliy hokimiyatning","Maxsus fondning"],c:1,e:"O'zbekiston Respublikasida <b>yer — davlat mulki</b> (Yer kodeksi 1-modda)."},
+  {h:'Yer kodeksi',q:"Yer kodeksiga ko'ra fuqarolar yerni qanday asosda foydalanishlari mumkin?",o:["Mulkchilik huquqida","Umrbod merosga qoldirib egalik qilish yoki ijara huquqida","Faqat ijaraga","Faqat mulkchilikda"],c:1,e:"Fuqarolar yerni <b>umrbod merosga qoldirib egalik qilish huquqida yoki ijara huquqida</b> foydalanishlari mumkin."},
+  {h:'Yer kodeksi',q:"Yer kodeksiga ko'ra qaysi maqsadda yer berish taqiqlangan?",o:["Qishloq xo'jaligi","Ekologik jihatdan qo'riqlanadigan hududlarda noqishloq maqsadlarda","Turar-joy qurilishi","Sanoat qurilishi"],c:1,e:"<b>Ekologik jihatdan qo'riqlanadigan hududlarda</b> yerlarni noqishloq maqsadlarda ishlatish taqiqlangan."},
+  {h:'Yer kodeksi',q:"Yer kodeksiga ko'ra yer uchastka chegaralari qanday belgilanadi?",o:["Egasining xohishi bilan","Kadastr muhandisi tomonidan","Qo'shni tomonidan","Mahalla tomonidan"],c:1,e:"Yer uchastka chegaralari <b>kadastr muhandisi</b> tomonidan belgilanadi va hujjatlashtiriladi."},
+  {h:'Yer kodeksi',q:"Yer kodeksiga ko'ra yer uchastkasidan o'zboshimchalik bilan foydalanish qanday javobgarlikka sabab bo'ladi?",o:["Ogohlantirish","Jarima va yer tortib olinishi","Faqat jarima","Hech narsa"],c:1,e:"<b>Yer uchastkasidan o'zboshimchalik bilan foydalanish</b> jarima va yer uchastkasini tortib olishga sabab bo'ladi."},
+  {h:'Yer kodeksi',q:"Yer kodeksiga ko'ra yer solig'ini kim to'laydi?",o:["Faqat mulk egasi","Yer foydalanuvchi (ijara yoki egalik huquqida)","Faqat yuridik shaxslar","Davlat"],c:1,e:"Yer solig'ini <b>yer foydalanuvchi</b> — ijara yoki egalik huquqida foydalanuvchi shaxs to'laydi."},
+
+  // ===== Umumiy (10 ta savol) =====
+  {h:'Umumiy',q:"Qaysi hujjat ko'chmas mulkka bo'lgan huquqlarni ro'yxatdan o'tkazishning asosiy qonuniy asosi?",o:["VMQ 389-son","VMQ 535-son","URQ-803-son","VMQ 186-son"],c:2,e:"Ko'chmas mulkka bo'lgan huquqlarni davlat ro'yxatidan o'tkazishning asosiy qonuniy asosi <b>URQ-803-son</b>."},
+  {h:'Umumiy',q:"VMQ 535-son va VMQ 186-son o'rtasidagi bog'liqlik?",o:["Ular bir-birini bekor qiladi","VMQ 535-son bo'yicha kadastr pasporti to'lovi VMQ 186-son asosida belgilanadi","Ular bir xil hujjat","Har xil sohalarga"],c:1,e:"VMQ 535-son 2-ilova reglamentiga ko'ra kadastr pasportini berish uchun undiriladigan <b>to'lov miqdori VMQ 186-son asosida belgilanadi</b>."},
+  {h:'Umumiy',q:"DKP (Davlat kadastrlari palatasi) qaysi vazirlik tizimida?",o:["Adliya vazirligi","Iqtisodiyot va moliya vazirligi huzuridagi Kadastr agentligi tizimida","Moliya vazirligi","Qurilish vazirligi"],c:1,e:"DKP <b>Iqtisodiyot va moliya vazirligi huzuridagi Kadastr agentligi</b> tizimiga kiradi."},
+  {h:'Umumiy',q:"Kadastr muhandisi ko'chmas mulk kadastr ishini tayyorlashda qaysi standartlarga amal qiladi?",o:["VMQ 186-son","URQ-803 va VMQ 535-son talablariga","Faqat Yer kodeksiga","Soliq qonunchiligi"],c:1,e:"Kadastr muhandisi <b>URQ-803 va VMQ 535-son</b> talablariga muvofiq ish olib boradi."},
+  {h:'Umumiy',q:"'Ko'chmas mulk ob'ekti' tushunchasi qaysi hujjatda asosiy ta'rifini oladi?",o:["Yer kodeksi","URQ-803","VMQ 389-son","VMQ 535-son"],c:1,e:"'Ko'chmas mulk ob'ekti' tushunchasi <b>URQ-803</b>da asosiy ta'rifini oladi."},
+  {h:'Umumiy',q:"O'zboshimchalik bilan egallab olingan yerga nisbatan qaysi qonun huquqlarni e'tirof etishni tartibga soladi?",o:["URQ-803","URQ-937","Yer kodeksi","VMQ 535-son"],c:1,e:"<b>URQ-937</b> — 2024-yil 5-avgust — o'zboshimchalik bilan egallab olingan yerlarga bo'lgan huquqlarni e'tirof etishni tartibga soladi."},
+  {h:'Umumiy',q:"Kadastr agentligi xizmatlarining 10 foiz jamg'armasi qaysi hujjat asosida ushlanadi?",o:["URQ-803","VMQ 535-son","VMQ 186-son","VMQ 389-son"],c:2,e:"10 foiz jamg'arma <b>VMQ 186-son (2014-yil)</b> asosida ushlanadi."},
+  {h:'Umumiy',q:"Ko'chmas mulk ro'yxatidan o'tkazish talabi paydo bo'lganda birinchi navbatda qaysi muassasaga murojaat qilinadi?",o:["Notariusga","DKP yoki MFCga","Hokimiyatga","Adliya vazirligiga"],c:1,e:"Birinchi navbatda <b>DKP (Davlat kadastrlari palatasi) yoki MFC</b>ga murojaat qilinadi."},
+  {h:'Umumiy',q:"Yer kodeksi, URQ-803 va VMQ 535-son'ning umumiy maqsadi?",o:["Soliq yig'ish","Ko'chmas mulk va yer huquqlarini tartibga solib, kadastr va reyestrni saqlash","Qurilish nazorati","Yer narxlarini belgilash"],c:1,e:"Barcha uch hujjat <b>ko'chmas mulk va yer huquqlarini tartibga solib, kadastr va davlat reyestrini saqlashni</b> ta'minlaydi."},
+  {h:'Umumiy',q:"2024-yilda qabul qilingan URQ-937 kadastr tizimiga qanday yangilik olib keldi?",o:["Kadastr narxlarini oshirdi","Hujjatsiz foydalanib kelgan ob'ektlarni legallashtirish imkoniyatini berdi","Yer soliqlarini bekor qildi","Chet elliklar uchun yer ochib berdi"],c:1,e:"URQ-937 <b>uzoq yillar hujjatsiz foydalanib kelgan ko'chmas mulk ob'ektlarini legallashtirish imkoniyatini</b> yaratdi."}
 ];
 </script>
 </body>
