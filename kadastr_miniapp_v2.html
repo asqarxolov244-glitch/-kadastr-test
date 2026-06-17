@@ -506,15 +506,29 @@ function startQuiz(){
   renderQ();
 }
 
+function shuffleOptions(q){
+  // Build array of {text, isCorrect} then shuffle, producing new option order
+  var items=q.o.map(function(o,i){return{text:o,isCorrect:i===q.c};});
+  for(var i=items.length-1;i>0;i--){
+    var j=Math.floor(Math.random()*(i+1));
+    var tmp=items[i];items[i]=items[j];items[j]=tmp;
+  }
+  var newO=items.map(function(it){return it.text;});
+  var newC=items.findIndex(function(it){return it.isCorrect;});
+  return{o:newO,c:newC};
+}
+
 function renderQ(){
   if(cur>=qs.length){finishQ();return;}
   var q=qs[cur];
+  var shuffled=shuffleOptions(q);
+  q._o=shuffled.o; q._c=shuffled.c; // per-render shuffled copy, original q.o/q.c untouched
   document.getElementById('prog').style.width=((cur/qs.length)*100)+'%';
   document.getElementById('qcnt').textContent=(cur+1)+'/'+qs.length;
   document.getElementById('qtag').textContent=q.h;
   document.getElementById('qlbl').textContent='Savol '+(cur+1);
   document.getElementById('qtxt').textContent=q.q;
-  document.getElementById('opts').innerHTML=q.o.map(function(o,i){
+  document.getElementById('opts').innerHTML=q._o.map(function(o,i){
     return'<button class="opt" onclick="answer('+i+')"><span class="ol">'+['A','B','C','D'][i]+'</span>'+o+'</button>';
   }).join('');
   document.getElementById('expl').style.display='none';document.getElementById('btnn').style.display='none';
@@ -524,13 +538,20 @@ function renderQ(){
 function answer(idx){
   if(ans)return;ans=true;
   var q=qs[cur];var opts=document.querySelectorAll('.opt');opts.forEach(function(o){o.disabled=true;});
-  if(idx===q.c){opts[idx].classList.add('correct');corr++;}
-  else{opts[idx].classList.add('wrong');opts[q.c].classList.add('correct');wrn++;wqs.push({q:q.q,h:q.h,c:q.o[q.c]});}
+  var correctIdx=q._c;
+  if(idx===correctIdx){opts[idx].classList.add('correct');corr++;}
+  else{opts[idx].classList.add('wrong');opts[correctIdx].classList.add('correct');wrn++;wqs.push({q:q.q,h:q.h,c:q._o[correctIdx]});}
   document.getElementById('lc').textContent=corr;document.getElementById('lw').textContent=wrn;
-  var ex=document.getElementById('expl');ex.innerHTML='💡 '+q.e;ex.style.display='block';
+  var ex=document.getElementById('expl');
+  var isRight=idx===correctIdx;
+  ex.innerHTML=
+    '<div style="font-weight:700;margin-bottom:5px;color:'+(isRight?'#059669':'#dc2626')+'">'+(isRight?'✅ To\'g\'ri javob!':'❌ Noto\'g\'ri javob')+'</div>'+
+    '<div style="margin-bottom:6px"><b>To\'g\'ri javob:</b> '+['A','B','C','D'][correctIdx]+') '+q._o[correctIdx]+'</div>'+
+    '<div>💡 '+q.e+'</div>';
+  ex.style.display='block';
   var btn=document.getElementById('btnn');btn.style.display='inline-block';
   btn.textContent=cur+1>=qs.length?'Natijani ko\'rish':'Keyingi →';
-  if(TG) TG.HapticFeedback.impactOccurred(idx===q.c?'light':'heavy');
+  if(TG) TG.HapticFeedback.impactOccurred(isRight?'light':'heavy');
 }
 
 function nextQ(){cur++;renderQ();}
