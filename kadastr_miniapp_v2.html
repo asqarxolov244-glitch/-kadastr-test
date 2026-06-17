@@ -285,41 +285,62 @@ var ADMIN_TG_ID = '1233530096';
 var ADMIN_PINFL = '00000000000000';
 var KIRISH_PAROLI = 'kadastr2026';
 
-// ========== JSONBIN.IO CLOUD ==========
-// JSONBin.io'da BEPUL hisob oching: https://jsonbin.io
-// 1. Sign up → API Keys → Secret key ni oling
-// 2. Create a Bin → Bin ID ni oling
-// Shularni shu yerga yozing:
-var JSONBIN_SECRET = '$2a$10$SIZNING_SECRET_KEYINGIZ'; // <-- o'zgartiring
-var JSONBIN_BIN_ID = 'SIZNING_BIN_IDINGIZ';           // <-- o'zgartiring
-var CLOUD_ENABLED = false; // JSONBin sozlagandan keyin true qiling
+// ========== CLOUD STORAGE (extendsclass.com, ro'yxatdan o'tishsiz) ==========
+// SOZLASH: Admin panelda "Cloud sozlash" tugmasini bosing - u avtomatik bin
+// yaratadi va ID'ni shu yerga ko'chirib qo'yish kerakligini ko'rsatadi.
+// ID ni quyiga yozib, faylni qayta GitHub'ga yuklang - shunda BARCHA
+// foydalanuvchilar (qaysi qurilmadan kirishidan qat'i nazar) bitta umumiy
+// statistikaga yozadi.
+var CLOUD_BIN_ID = ''; // <-- bu yerga bin ID ni yozing (masalan: '64f1a2b3c4d5e6')
+var CLOUD_BASE = 'https://json.extendsclass.com/bin';
+var CLOUD_ID_KEY = 'kd_cloud_bin_id';
 
-// JSONBin'dan barcha natijalarni olish
-async function cloudGet(){
-  if(!CLOUD_ENABLED) return gD();
+function getCloudId(){
+  if(CLOUD_BIN_ID) return CLOUD_BIN_ID; // qattiq yozilgan ID ustun
+  return localStorage.getItem(CLOUD_ID_KEY) || '';
+}
+function setCloudId(id){ try{localStorage.setItem(CLOUD_ID_KEY, id);}catch(e){} }
+function isCloudEnabled(){ return !!getCloudId(); }
+
+// Yangi cloud bin yaratish (faqat bir marta, admin tomonidan)
+async function cloudCreateBin(){
   try{
-    var r=await fetch('https://api.jsonbin.io/v3/b/'+JSONBIN_BIN_ID+'/latest',{
-      headers:{'X-Master-Key':JSONBIN_SECRET}
+    var r=await fetch(CLOUD_BASE,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({results:[]})
     });
     var j=await r.json();
-    return j.record && j.record.results ? j.record.results : [];
+    if(j && j.id){ setCloudId(j.id); return j.id; }
+    return null;
+  }catch(e){ return null; }
+}
+
+// Cloud'dan barcha natijalarni olish
+async function cloudGet(){
+  var id=getCloudId();
+  if(!id) return gD();
+  try{
+    var r=await fetch(CLOUD_BASE+'/'+id);
+    if(!r.ok) return gD();
+    var j=await r.json();
+    return j && j.results ? j.results : [];
   }catch(e){ return gD(); }
 }
 
-// JSONBin'ga yangi natija qo'shish
+// Cloud'ga yangi natija qo'shish
 async function cloudAdd(entry){
-  if(!CLOUD_ENABLED){ addD(entry); return; }
+  var id=getCloudId();
+  if(!id){ addD(entry); return; }
   try{
-    // Avval hozirgi ma'lumotlarni olamiz
     var all = await cloudGet();
     all.push(entry);
-    // Yangilaymiz
-    await fetch('https://api.jsonbin.io/v3/b/'+JSONBIN_BIN_ID,{
+    await fetch(CLOUD_BASE+'/'+id,{
       method:'PUT',
-      headers:{'Content-Type':'application/json','X-Master-Key':JSONBIN_SECRET},
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify({results:all})
     });
-  }catch(e){ addD(entry); }
+  }catch(e){}
   // Har doim localga ham saqlaymiz (backup)
   addD(entry);
 }
@@ -471,7 +492,7 @@ async function loadH(){
     '<div class="dc"><div class="dn">'+best+'%</div><div class="dl">Eng yuqori</div></div>';
 
   // Cloud status
-  if(CLOUD_ENABLED){
+  if(isCloudEnabled()){
     try{
       await cloudGet();
       setCloudStatus(true,'☁️ Cloud statistika ulangan — barcha qurilmalar sinxronlashadi');
@@ -479,9 +500,8 @@ async function loadH(){
       setCloudStatus(false,'⚠️ Cloud ulanmadi — faqat bu qurilma statistikasi');
     }
   }else{
-    setCloudStatus(false,'📴 Cloud o\'chirilgan — faqat bu qurilma statistikasi saqlanadi','cloud-msg','cloud-bar');
     document.getElementById('cloud-bar').className='cloud-status';
-    document.getElementById('cloud-msg').textContent='💡 Barcha qurilmalarda statistika uchun JSONBin.io ulaning (README ga qarang)';
+    document.getElementById('cloud-msg').textContent='📴 Cloud hali sozlanmagan — faqat bu qurilma statistikasi saqlanadi (admin sozlashi kerak)';
   }
 
   var h=document.getElementById('uhist');
@@ -587,8 +607,18 @@ function goHome(){document.getElementById('tab-result').classList.remove('on');d
 
 async function loadAFull(){
   document.getElementById('pcur').textContent=gP();
-  setCloudStatus(true,'☁️ Cloud ma\'lumotlari yuklanmoqda...','cloud-msg-admin','cloud-bar-admin');
-  _all = await cloudGet();
+  if(!isCloudEnabled()){
+    document.getElementById('cloud-bar-admin').className='cloud-status';
+    document.getElementById('cloud-bar-admin').innerHTML=
+      '<div style="width:100%">'+
+      '<div style="margin-bottom:8px">📴 Cloud hali sozlanmagan — har bir xodim natijasi faqat o\'z qurilmasida saqlanadi.</div>'+
+      '<button class="btnal" style="width:100%" onclick="setupCloud()">☁️ Cloud statistikani sozlash (1 marta bosing)</button>'+
+      '</div>';
+    _all = gD();
+  }else{
+    setCloudStatus(true,'☁️ Cloud ma\'lumotlari yuklanmoqda...','cloud-msg-admin','cloud-bar-admin');
+    _all = await cloudGet();
+  }
   _all.sort(function(a,b){return b.ts-a.ts;});
   var tot=_all.length,uniq={};_all.forEach(function(r){uniq[r.pinfl]=1;});var uc=Object.keys(uniq).length;
   var avg=tot?Math.round(_all.reduce(function(s,r){return s+r.pct;},0)/tot):0;
@@ -599,11 +629,20 @@ async function loadAFull(){
     '<div class="ac"><div class="acn">'+avg+'%</div><div class="acl">O\'rtacha</div></div>'+
     '<div class="ac"><div class="acn">'+top+'%</div><div class="acl">Eng yuqori</div></div>';
   renderT();renderTum();
-  if(CLOUD_ENABLED){
+  if(isCloudEnabled()){
     setCloudStatus(true,'☁️ Cloud ma\'lumotlari yuklandi — barcha qurilmalar natijasi','cloud-msg-admin','cloud-bar-admin');
+  }
+}
+
+async function setupCloud(){
+  var btn=event.target;btn.disabled=true;btn.textContent='Yaratilmoqda...';
+  var id=await cloudCreateBin();
+  if(id){
+    alert('✅ Cloud tayyor!\n\nBin ID: '+id+'\n\nBARCHA qurilmalarda doimiy ishlashi uchun, dasturchiga shu ID ni yuborib, faylga CLOUD_BIN_ID="'+id+'" deb yozdiring va GitHub Pages ga qayta yuklang.\n\nHozircha bu qurilmada cloud ishlay boshladi.');
+    loadAFull();
   }else{
-    document.getElementById('cloud-bar-admin').className='cloud-status';
-    document.getElementById('cloud-msg-admin').textContent='📴 Faqat bu qurilma natijasi ko\'rsatilmoqda (Cloud o\'chirilgan)';
+    alert('❌ Cloud yaratishda xatolik. Internetni tekshirib qayta urinib ko\'ring.');
+    btn.disabled=false;btn.textContent='☁️ Cloud statistikani sozlash (1 marta bosing)';
   }
 }
 
