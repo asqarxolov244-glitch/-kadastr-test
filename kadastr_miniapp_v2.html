@@ -610,9 +610,14 @@ async function loadAFull(){
 function renderT(){
   var tb=document.getElementById('mtb');
   if(!_all.length){tb.innerHTML='<tr><td colspan="5" class="te">Ma\'lumot topilmadi</td></tr>';return;}
-  tb.innerHTML=_all.map(function(r,i){
+  var sorted=_all.slice().sort(function(a,b){
+    var t1=(a.tuman||'').localeCompare(b.tuman||'');
+    if(t1!==0)return t1;
+    return b.ts-a.ts;
+  });
+  tb.innerHTML=sorted.map(function(r,i){
     var cl=r.pct>=70?'pg':r.pct>=50?'py':'pr';
-    var d=new Date(r.ts),ds=d.getDate()+'.'+(d.getMonth()+1)+'.'+d.getFullYear();
+    var d=new Date(r.ts),ds=String(d.getDate()).padStart(2,'0')+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+d.getFullYear();
     return'<tr><td style="color:#aaa;font-size:11px">'+(i+1)+'</td>'+
       '<td><b>'+r.name+'</b><br><span style="font-size:11px;color:#888">'+r.lavozim+'</span></td>'+
       '<td style="font-size:12px">'+r.tuman+'</td>'+
@@ -632,14 +637,30 @@ function renderTum(){
   }).join('');
 }
 
+function csvEscape(val){
+  var s=String(val==null?'':val);
+  s=s.replace(/"/g,'""');
+  return '"'+s+'"';
+}
+
 function expCSV(){
-  var csv="T/r,F.I.Sh,PINFL,Tuman,Lavozim,Hujjat,Ball,To'g'ri,Noto'g'ri,Sana\n";
-  _all.forEach(function(r,i){
-    var d=new Date(r.ts),ds=d.getDate()+'.'+(d.getMonth()+1)+'.'+d.getFullYear();
-    csv+=(i+1)+',"'+r.name+'","'+r.pinfl+'","'+(r.tuman||'')+'","'+(r.lavozim||'')+'","'+(r.hujjat||'')+'",'+r.pct+','+r.corr+','+r.wrn+',"'+ds+'"\n';
+  if(!_all.length){alert('Eksport qilish uchun ma\'lumot topilmadi!');return;}
+  // Sort: tuman (A-Z), keyin sana (eng yangi birinchi)
+  var sorted=_all.slice().sort(function(a,b){
+    var t1=(a.tuman||'').localeCompare(b.tuman||'');
+    if(t1!==0)return t1;
+    return b.ts-a.ts;
   });
+  var rows=[["T/r","F.I.Sh","PINFL","Tuman","Lavozim","Hujjat","Ball (%)","To'g'ri","Noto'g'ri","Jami savol","Sana","Vaqt"]];
+  sorted.forEach(function(r,i){
+    var d=new Date(r.ts);
+    var ds=String(d.getDate()).padStart(2,'0')+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+d.getFullYear();
+    var ts=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
+    rows.push([i+1,r.name||'',r.pinfl||'',r.tuman||'',r.lavozim||'',r.hujjat||'Barchasi',r.pct,r.corr,r.wrn,r.total,ds,ts]);
+  });
+  var csv=rows.map(function(row){return row.map(csvEscape).join(',');}).join('\r\n');
   var a=document.createElement('a');a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);
-  a.download='kadastr_'+new Date().toISOString().slice(0,10)+'.csv';a.click();
+  a.download='kadastr_natijalar_'+new Date().toISOString().slice(0,10)+'.csv';a.click();
 }
 
 function show(id){document.querySelectorAll('.scr').forEach(function(s){s.classList.remove('on');});document.getElementById(id).classList.add('on');}
